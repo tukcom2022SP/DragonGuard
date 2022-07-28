@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     inner class NetworkThread : Thread(){
         override fun run() {
             val pageNo = 1
-	val key = ""
+            val key = ""
             val site = "https://api.visitjeju.net/vsjApi/contents/searchList?apiKey=&{key}&locale=kr&page="+pageNo.toString()
 
             val url = URL(site)
