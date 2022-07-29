@@ -9,13 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var item: [Item] = []
+    @State var result: [Result] = []
     
-    
-    let apiKey = ""
-    let index = 1
+    let apiKey = "rrq71a2rotyj9tqm"
     func getData(){
-//        DispatchQueue.global(qos: .userInteractive).sync {
             let urlString = "https://api.visitjeju.net/vsjApi/contents/searchList?apiKey=\(apiKey)&locale=kr&page=1"
             
             if let url = URL(string: urlString){
@@ -26,11 +23,17 @@ struct ContentView: View {
                     guard let data = data else { return }
                     
                     if let json = try? JSONDecoder().decode(Result.self,from: data){
-                        self.item = json.items
+                        self.result.append(json)
+                        print(result[0].items[99].title)
+                        
+                        /*
+                         함수 내부에서 print하는 경우 오류가 발생하지 않지만
+                         함수 외부나 ui에 적용하는 경우 thread1 out of range 발생
+                            -> 데이터값을 찾지 못하는 것 같음
+                         */
+                        
                     }
-                    
                 }.resume()
-//            }
         }
     }//getData
     
@@ -38,7 +41,7 @@ struct ContentView: View {
     var body: some View {
     
         VStack{
-            Text("hello \(item[0].title)")
+            Text("HEllo")
             
         }.onAppear(perform: getData)
     
