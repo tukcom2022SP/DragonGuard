@@ -11,6 +11,8 @@
 		3B2D0CC72891834E0062FC2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D0CC62891834E0062FC2C /* ContentView.swift */; };
 		3B2D0CC92891834E0062FC2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2D0CC82891834E0062FC2C /* Assets.xcassets */; };
 		3B2D0CCC2891834E0062FC2C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2D0CCB2891834E0062FC2C /* Preview Assets.xcassets */; };
+		3B2D0CF7289193B60062FC2C /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D0CF6289193B60062FC2C /* JSON.swift */; };
+		3B5BA42A2893E79800FC0826 /* ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5BA4292893E79800FC0826 /* ParsingJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		3B2D0CC62891834E0062FC2C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3B2D0CC82891834E0062FC2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B2D0CCB2891834E0062FC2C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3B2D0CF6289193B60062FC2C /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		3B5BA4292893E79800FC0826 /* ParsingJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,7 @@
 		3B2D0CB82891834E0062FC2C = {
 			isa = PBXGroup;
 			children = (
+				3B5BA4292893E79800FC0826 /* ParsingJSON.swift */,
 				3B2D0CC32891834E0062FC2C /* JejuTourApp */,
 				3B2D0CC22891834E0062FC2C /* Products */,
 			);
@@ -55,6 +60,7 @@
 				3B2D0CC62891834E0062FC2C /* ContentView.swift */,
 				3B2D0CC82891834E0062FC2C /* Assets.xcassets */,
 				3B2D0CCA2891834E0062FC2C /* Preview Content */,
+				3B2D0CF6289193B60062FC2C /* JSON.swift */,
 			);
 			path = JejuTourApp;
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			files = (
 				3B2D0CC72891834E0062FC2C /* ContentView.swift in Sources */,
 				3B2D0CC52891834E0062FC2C /* JejuTourAppApp.swift in Sources */,
+				3B5BA42A2893E79800FC0826 /* ParsingJSON.swift in Sources */,
+				3B2D0CF7289193B60062FC2C /* JSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +275,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"JejuTourApp/Preview Content\"";
+				DEVELOPMENT_TEAM = SN5J3DYFX4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -295,6 +304,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"JejuTourApp/Preview Content\"";
+				DEVELOPMENT_TEAM = SN5J3DYFX4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
