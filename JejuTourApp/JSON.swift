@@ -11,6 +11,8 @@ struct Result: Codable {
     let totalCount, resultCount, pageSize, pageCount: Int
     let currentPage: Int
     let items: [Item]
+    
+    static let sample = Result(result: "", resultMessage: "", totalCount: 0, resultCount: 0, pageSize: 0, pageCount: 0, currentPage: 0, items: [])
 }
 
 struct Item: Codable {
@@ -30,6 +32,9 @@ struct Item: Codable {
         case region2CD = "region2cd"
         case address, roadaddress, tag, introduction, latitude, longitude, postcode, phoneno, repPhoto
     }
+    
+    static let ItemSample = Item(alltag: "", contentsid: "", contentscd: Contentscd(value: "", label: "", refID: ""), title: "", region1CD: Contentscd(value: "", label: "", refID: ""), region2CD: Contentscd(value: "", label: "", refID: ""), address: "", roadaddress: "", tag: "", introduction: "", latitude: 0, longitude: 0, postcode: "", phoneno: "", repPhoto: RepPhoto(descseo: "", photoid: Photoid(photoid: 0, imgpath: "", thumbnailpath: "")))
+    
 }
 
 struct Contentscd: Codable {

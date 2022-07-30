@@ -10,9 +10,12 @@ import SwiftUI
 @main
 struct JejuTourAppApp: App {
     
+    var data = Parsing()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(data)
                 
         }
     }
