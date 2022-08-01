@@ -15,6 +15,8 @@ struct SubScreen1: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack{
+                Spacer()
+                    .frame (height: 50)
                 HStack{
                     ScrollView{
                         
@@ -33,18 +35,19 @@ struct SubScreen1: View {
 
                     VStack{
                         Spacer()
+                            .frame(height:60)
                         Image("mainenroll")
                             .resizable()
                             .padding(.leading)
                             .frame(width: 90, height: 90)
 
                         Spacer()
-                        Spacer()
-                        Spacer()
+                            .frame(height:330)
                         Image("notice")
                             .resizable()
                             .padding(.leading)
                             .frame(width: 90, height: 90)
+                        Spacer()
                     }
                     .padding(.leading)
                     .frame(width: 90, height: 610,alignment: .trailing)
