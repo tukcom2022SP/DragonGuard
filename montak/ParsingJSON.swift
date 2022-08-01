@@ -9,7 +9,7 @@ class Parsing: ObservableObject{
     @Published var data:Result = Result.sample
     @Published var decodedItem : [Item] = [Item.ItemSample]
 
-    let apiKey = ""
+    let apiKey = "rrq71a2rotyj9tqm"
 
     func getData(){
         let urlString = "https://api.visitjeju.net/vsjApi/contents/searchList?apiKey=\(apiKey)&locale=kr&page=1"
@@ -41,5 +41,9 @@ class Parsing: ObservableObject{
         }
             daskTask.resume()
     }//getData
+    
+    func getFirstItem() -> Item{
+        return self.decodedItem[3]
+    }
     
 }
