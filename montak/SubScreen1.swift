@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SubScreen1: View {
+    
+    @State var checking : Bool = false
+    
     var body: some View {
         ZStack{
             Image("monttakmain")
@@ -18,35 +21,61 @@ struct SubScreen1: View {
                 Spacer()
                     .frame (height: 50)
                 HStack{
-                    ScrollView{
-                        
+                    if(checking){
+                        ScrollView{
+                            
+                            VStack {
+                                ForEach(0..<100){i in
+                                Image("textbar")
+                                    .resizable()
+                                    .frame(width: 230, height: 30)
+                                .padding(.leading)
+                                }
+                            }
+                            
+                            .frame(maxWidth:.infinity)
+                        }.frame(width: 230, height: 550)
+                            .padding(.top)
+                    }
+                    else{
                         VStack {
-                            ForEach(0..<100){i in 
                             Image("textbar")
                                 .resizable()
-                                .frame(width: 230, height: 30)
-                            .padding(.leading)
-                            }
-                        }
-                        
-                        .frame(maxWidth:.infinity)
-                    }.frame(width: 230, height: 550,alignment: .bottom)
-                        .padding(.top)
-
+                                .frame(width: 230, height: 60)
+                                .padding(.leading)
+                            Spacer()
+                                .frame(height:20)
+                            Text("안녕하세요")
+                                .frame(width: 230, height: 400)
+                                .padding(.leading)
+                                .font(.system(size: 20))
+                                
+                                
+                                
+                            
+                        }.frame(width: 230, height: 550)
+                            .padding(.top)
+                            
+                    }
+                    
+                    
                     VStack{
                         Spacer()
                             .frame(height:60)
-                        Image("mainenroll")
-                            .resizable()
-                            .padding(.leading)
-                            .frame(width: 90, height: 90)
-
+                        Button(action:{print("Button")}){
+                            Image("mainenroll")
+                                .resizable()
+                                .padding(.leading)
+                                .frame(width: 90, height: 90)
+                        }
                         Spacer()
                             .frame(height:330)
-                        Image("notice")
-                            .resizable()
-                            .padding(.leading)
-                            .frame(width: 90, height: 90)
+                        Button(action: {print("notice")}){
+                            Image("notice")
+                                .resizable()
+                                .padding(.leading)
+                                .frame(width: 90, height: 90)
+                        }
                         Spacer()
                     }
                     .padding(.leading)
@@ -57,17 +86,25 @@ struct SubScreen1: View {
                 
                 Spacer()
                 HStack{
-                    Image("mainmuk")
-                        .resizable()
+                    Button(action: {print("먹거리");self.checking = true}){
+                        Image("mainmuk")
+                            .resizable()
+                    }
                     Spacer()
-                    Image("mainnol")
-                        .resizable()
+                    Button(action: {print("놀거리"); self.checking = true}){
+                        Image("mainnol")
+                            .resizable()
+                    }
                     Spacer()
-                    Image("mainbol")
-                        .resizable()
+                    Button(action: {print("볼거리");self.checking = true}){
+                        Image("mainbol")
+                            .resizable()
+                    }
                     Spacer()
-                    Image("mainshuil")
-                        .resizable()
+                    Button(action: {print("쉴 곳");self.checking = true}){
+                        Image("mainshuil")
+                            .resizable()
+                    }
                     Spacer()
                 }//HStack
                 .frame(width: 350, height: 130)

@@ -15,6 +15,11 @@ struct subScreen2: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack{
+                Image("whitereport")
+                
+                
+                Image("back")
+                
                 
             }
         }//ZStack
