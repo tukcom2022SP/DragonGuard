@@ -9,14 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var decodingData: Parsing
-    //var temp : String {String(format: "%d", decodingData.data.currentPage) }
-    //var str = decodingData.data.items[0].title
+//    var temp : String {String(format: "%d", decodingData.data.currentPage) }
+    @ObservedObject var value = Parsing()
+    @State var a : String = ""
+    
+    init(){
+        self.value.getData()
+        self.timer()
+        
+    }
+    func timer(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)){
+            var mItem: Item
+            mItem = self.value.getFirstItem()
+            self.a = mItem.title
+            print(mItem.title)
+        }
+    }
+
     
     var body: some View {
-        Image("monttakpause")
-            .resizable()
-            .edgesIgnoringSafeArea(.all)
-        
+        ZStack{
+            Image("monttakpause")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+            
+            Text("hello \(a)")
+                
+            
+        }
         
     }
 }
