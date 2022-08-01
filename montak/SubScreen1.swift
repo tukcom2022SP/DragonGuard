@@ -16,19 +16,20 @@ struct SubScreen1: View {
             
             VStack{
                 HStack{
-
-                    VStack {
-                        Image("textbar")
-                            .resizable()
-                            .frame(width: 230, height: 30)
-                        .padding(.leading)
-                        Image("textbar")
-                            .resizable()
-                            .frame(width: 230, height: 30)
+                    ScrollView{
+                        
+                        VStack {
+                            ForEach(0..<100){i in 
+                            Image("textbar")
+                                .resizable()
+                                .frame(width: 230, height: 30)
                             .padding(.leading)
+                            }
+                        }
                         
-                    }
-                        
+                        .frame(maxWidth:.infinity)
+                    }.frame(width: 230, height: 550,alignment: .bottom)
+                        .padding(.top)
 
                     VStack{
                         Spacer()
@@ -40,7 +41,6 @@ struct SubScreen1: View {
                         Spacer()
                         Spacer()
                         Spacer()
-
                         Image("notice")
                             .resizable()
                             .padding(.leading)
