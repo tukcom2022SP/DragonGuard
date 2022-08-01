@@ -9,15 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var decodingData: Parsing
-    var temp : String {String(format: "%d", decodingData.data.totalCount) }
-    
+    //var temp : String {String(format: "%d", decodingData.data.currentPage) }
+    //var str = decodingData.data.items[0].title
     
     var body: some View {
-        VStack{
-            Text("HEllo")
-            Text("HEllo \(temp)")
-            
-        }
+        Image("monttakpause")
+            .resizable()
+            .edgesIgnoringSafeArea(.all)
+        
         
     }
 }
