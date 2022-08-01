@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var decodingData: Parsing
+    var temp : String {String(format: "%d", decodingData.data.totalCount) }
+    
+    
     var body: some View {
-        Text("Hello, world!!")
-            .padding()
+        VStack{
+            Text("HEllo")
+            Text("HEllo \(temp)")
+            
+        }
+        
     }
 }
 
