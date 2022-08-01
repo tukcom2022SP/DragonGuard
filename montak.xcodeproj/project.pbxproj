@@ -13,6 +13,8 @@
 		3B3732C12897773900C40D3E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3732C02897773900C40D3E /* Preview Assets.xcassets */; };
 		3B3732CA289778E600C40D3E /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732C9289778E600C40D3E /* JSON.swift */; };
 		3B3732CE28977A1000C40D3E /* ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732CD28977A1000C40D3E /* ParsingJSON.swift */; };
+		3B3732D0289794A200C40D3E /* SubScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732CF289794A200C40D3E /* SubScreen1.swift */; };
+		3B3732D22897964900C40D3E /* subScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732D12897964900C40D3E /* subScreen2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		3B3732C02897773900C40D3E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3B3732C9289778E600C40D3E /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		3B3732CD28977A1000C40D3E /* ParsingJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingJSON.swift; sourceTree = "<group>"; };
+		3B3732CF289794A200C40D3E /* SubScreen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubScreen1.swift; sourceTree = "<group>"; };
+		3B3732D12897964900C40D3E /* subScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subScreen2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 			children = (
 				3B3732B92897773800C40D3E /* montakApp.swift */,
 				3B3732BB2897773800C40D3E /* ContentView.swift */,
+				3B3732CF289794A200C40D3E /* SubScreen1.swift */,
+				3B3732D12897964900C40D3E /* subScreen2.swift */,
 				3B3732C9289778E600C40D3E /* JSON.swift */,
 				3B3732CD28977A1000C40D3E /* ParsingJSON.swift */,
 				3B3732BD2897773900C40D3E /* Assets.xcassets */,
@@ -144,6 +150,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B3732CE28977A1000C40D3E /* ParsingJSON.swift in Sources */,
+				3B3732D22897964900C40D3E /* subScreen2.swift in Sources */,
+				3B3732D0289794A200C40D3E /* SubScreen1.swift in Sources */,
 				3B3732BC2897773800C40D3E /* ContentView.swift in Sources */,
 				3B3732BA2897773800C40D3E /* montakApp.swift in Sources */,
 				3B3732CA289778E600C40D3E /* JSON.swift in Sources */,
