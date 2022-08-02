@@ -37,12 +37,44 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <ImageButton
-                    android:id="@+id/textbar1"
+                <LinearLayout
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#00ff0000"
-                    android:src="@drawable/textbar" />
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/textbar">
+
+                        <TextView
+                            android:id="@+id/textbar1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:text="제목" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textbar2"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:text="내용" />
+                    </LinearLayout>
+                </LinearLayout>
 
             </ScrollView>
 
