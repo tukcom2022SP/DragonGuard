@@ -1,4 +1,4 @@
-
+//
 //  Created by 정호진 on 2022/07/29.
 //
 import SwiftUI
@@ -8,7 +8,7 @@ class Parsing: ObservableObject{
 
     @Published var data:Result = Result.sample
     @Published var decodedItem : [Item] = [Item.ItemSample]
-    @Published var infoList : [Info] = [Info.infoInit]
+    
 
     let apiKey = ""
 
@@ -30,7 +30,6 @@ class Parsing: ObservableObject{
                 DispatchQueue.main.async {
                     do {
                         let decodedData = try JSONDecoder().decode(Result.self, from: data)
-
                         self.data = decodedData
                         self.decodedItem = decodedData.items
                     } catch let error {
@@ -43,26 +42,8 @@ class Parsing: ObservableObject{
             daskTask.resume()
     }//getData
     
-    func getFirstItem() -> Item{
-        return self.decodedItem[2]
+    func getItemInfo() -> [Item]{
+        return self.decodedItem
     }
-    
-    
-}
-
-struct Info {   //JSON데이터 분류 작업 저장 구조체
-    var label : String
-    var title : String?
-    var address : String?
-    var roadAddress : String?
-    var introduction : String?
-    var latitude : Double?
-    var longitude : Double?
-    var phoneno : String?
-    var imgpath : String?
-    
-    static let infoInit = Info(label: "", title: "", address: "", roadAddress: "", introduction: "", latitude: 0, longitude: 0, phoneno: "", imgpath : "")
-        
-    
     
 }
