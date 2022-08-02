@@ -4,90 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/monttakmain"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="1"/>
-
-
+        android:layout_weight="1"
+        android:orientation="vertical" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="4.7">
+        android:layout_weight="4.7"
+        android:orientation="horizontal">
 
-      <LinearLayout
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:orientation="vertical"
-          android:layout_weight="1"/>
-
-      <LinearLayout
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:orientation="vertical"
-          android:layout_weight="5.2">
-
-          <ScrollView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content">
-
-              <ImageButton
-                  android:id="@+id/textbar1"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:backgroundTint="#00ff0000"
-                  android:src="@drawable/textbar"/>
-
-          </ScrollView>
-
-      </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="2.6">
+            android:layout_weight="1"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5.2"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/textbar1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#00ff0000"
+                    android:src="@drawable/textbar" />
+
+            </ScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.6"
+            android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/enroll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/mainenroll"/>
+                android:src="@drawable/mainenroll" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.5"/>
+                android:layout_weight="3.5" />
+
             <ImageView
                 android:id="@+id/notice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/notice"/>
+                android:src="@drawable/notice" />
 
         </LinearLayout>
-
 
 
     </LinearLayout>
 
 
-
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
+        android:layout_gravity="bottom"
         android:layout_weight="1.5"
-        android:layout_gravity="bottom">
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/mainmuk"
