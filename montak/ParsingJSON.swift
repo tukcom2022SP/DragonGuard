@@ -8,6 +8,7 @@ class Parsing: ObservableObject{
 
     @Published var data:Result = Result.sample
     @Published var decodedItem : [Item] = [Item.ItemSample]
+    @Published var infoList : [Info] = [Info.infoInit]
 
     let apiKey = ""
 
@@ -43,7 +44,25 @@ class Parsing: ObservableObject{
     }//getData
     
     func getFirstItem() -> Item{
-        return self.decodedItem[3]
+        return self.decodedItem[2]
     }
+    
+    
+}
+
+struct Info {   //JSON데이터 분류 작업 저장 구조체
+    var label : String
+    var title : String?
+    var address : String?
+    var roadAddress : String?
+    var introduction : String?
+    var latitude : Double?
+    var longitude : Double?
+    var phoneno : String?
+    var imgpath : String?
+    
+    static let infoInit = Info(label: "", title: "", address: "", roadAddress: "", introduction: "", latitude: 0, longitude: 0, phoneno: "", imgpath : "")
+        
+    
     
 }
