@@ -10,7 +10,7 @@ class Parsing: ObservableObject{
     @Published var decodedItem : [Item] = [Item.ItemSample]
     @Published var infoList : [Info] = [Info.infoInit]
 
-    let apiKey = ""
+    let apiKey = "rrq71a2rotyj9tqm"
 
     func getData(){
         let urlString = "https://api.visitjeju.net/vsjApi/contents/searchList?apiKey=\(apiKey)&locale=kr&page=1"
