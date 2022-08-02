@@ -6,23 +6,16 @@
 //
 import SwiftUI
 
-struct ContentView: View {
-    @EnvironmentObject var decodingData: Parsing
+struct MainScreen: View {
     @ObservedObject var value = Parsing()
-    @State var checkButtonList : Bool = false
-    @State var changeScreen : Bool = false
-    @State var tourTitle : String = ""
-    @State var buttonIndex : Int = 0
-    init(){ self.value.getData()}
+    @State var checkButtonList : Bool = false   //버튼을 눌렀을 경우 정보 목록 출력하기 위한 변수
+    @State var changeScreen : Bool = false  //시작화면에서 메인화면으로 전환하기 위한 변수
+    @State var buttonIndex : Int = 0    //먹거리, 놀거리, 볼거리, 쉴곳 구분하기 위한 인덱스
+    init(){ self.value.getData()}   //메인화면 실행시 시작하는 화면
     
     func timer(){
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)){
-            var mItem: Item
-            mItem = self.value.getItemInfo()[2]
             self.changeScreen = true
-            if let addr = mItem.address {print(addr)}
-            self.tourTitle = mItem.title
-            print("\(mItem.title)")
         }
     }
     
@@ -112,8 +105,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainScreen()
     }
 }

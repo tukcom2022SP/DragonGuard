@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct Scroll_In_Button: View {
-    var mItem : [Item]
-    var index : Int
+    var mItem : [Item]      //JSON 정보
+    var index : Int         //해당 정보의 인덱스
     
     var body: some View {
         Button(action: {print("\(index)")} ){
