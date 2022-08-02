@@ -9,11 +9,9 @@ import SwiftUI
 
 @main
 struct montakApp: App {
-    var data = Parsing()
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(data)
+            MainScreen()
         }
     }
 }

@@ -16,7 +16,6 @@ struct Scroll: View {
         ScrollView{
             VStack {
                 ForEach(0..<self.mItem.count){ i in
-                    
                     if((self.mItem[i].contentscd.label == "음식점") && (index == 0)){
                         Scroll_In_Button(mItem: self.mItem, index: i)
                     }
@@ -35,11 +34,10 @@ struct Scroll: View {
                     else if (self.mItem[i].contentscd.label == "쇼핑" && index == 1){
                         Scroll_In_Button(mItem: self.mItem, index: i)
                     }
-                    
-                }
-            }
+                }//ForEach
+            }//VStack
             .frame(maxWidth:.infinity)
-        }
+        }//ScrollView
     }
 }
 
