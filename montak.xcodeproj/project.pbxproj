@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B30C68E2898E108001ADE41 /* Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30C68D2898E108001ADE41 /* Scroll.swift */; };
+		3B30C6902898E1BF001ADE41 /* FirstNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30C68F2898E1BF001ADE41 /* FirstNotice.swift */; };
+		3B30C6922898E232001ADE41 /* Enroll&Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30C6912898E232001ADE41 /* Enroll&Notice.swift */; };
 		3B3732BA2897773800C40D3E /* montakApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732B92897773800C40D3E /* montakApp.swift */; };
 		3B3732BC2897773800C40D3E /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732BB2897773800C40D3E /* MainScreen.swift */; };
 		3B3732BE2897773900C40D3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3732BD2897773900C40D3E /* Assets.xcassets */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B30C68D2898E108001ADE41 /* Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scroll.swift; sourceTree = "<group>"; };
+		3B30C68F2898E1BF001ADE41 /* FirstNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstNotice.swift; sourceTree = "<group>"; };
+		3B30C6912898E232001ADE41 /* Enroll&Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enroll&Notice.swift"; sourceTree = "<group>"; };
 		3B3732B62897773800C40D3E /* montak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = montak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3732B92897773800C40D3E /* montakApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = montakApp.swift; sourceTree = "<group>"; };
 		3B3732BB2897773800C40D3E /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
@@ -59,6 +65,9 @@
 			children = (
 				3B3732B92897773800C40D3E /* montakApp.swift */,
 				3B3732BB2897773800C40D3E /* MainScreen.swift */,
+				3B30C6912898E232001ADE41 /* Enroll&Notice.swift */,
+				3B30C68F2898E1BF001ADE41 /* FirstNotice.swift */,
+				3B30C68D2898E108001ADE41 /* Scroll.swift */,
 				3B3732D12897964900C40D3E /* SubScreen2.swift */,
 				3B3732C9289778E600C40D3E /* JSON.swift */,
 				3B3732CD28977A1000C40D3E /* ParsingJSON.swift */,
@@ -146,11 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B30C6902898E1BF001ADE41 /* FirstNotice.swift in Sources */,
 				3B3732CE28977A1000C40D3E /* ParsingJSON.swift in Sources */,
+				3B30C6922898E232001ADE41 /* Enroll&Notice.swift in Sources */,
 				3B3732D22897964900C40D3E /* SubScreen2.swift in Sources */,
 				3B3732BC2897773800C40D3E /* MainScreen.swift in Sources */,
 				3B3732BA2897773800C40D3E /* montakApp.swift in Sources */,
 				3B3732CA289778E600C40D3E /* JSON.swift in Sources */,
+				3B30C68E2898E108001ADE41 /* Scroll.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +291,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"montak/Preview Content\"";
+				DEVELOPMENT_TEAM = SN5J3DYFX4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -307,6 +320,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"montak/Preview Content\"";
+				DEVELOPMENT_TEAM = SN5J3DYFX4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
