@@ -8,14 +8,31 @@
 import SwiftUI
 
 struct Scroll: View {
+    var index : Int
+    var mItem: [Item]
+    
+    func divideInfo(){
+        
+        
+    }
+    
+    
     var body: some View {
         ScrollView{
             VStack {
-                ForEach(0..<100){i in
-                    Image("textbar")
-                        .resizable()
-                        .frame(width: 230, height: 30)
-                        .padding(.leading)
+                ForEach(0..<self.mItem.count){ i in
+                    Button(action: {print("\(i)hihiashfidsjflkafjdsf")} ){
+                        ZStack{
+                            Image("textbar")
+                                .resizable()
+                                .frame(width: 230, height: 70)
+                                .padding(.leading)
+                            Text("\(mItem[i].title)")
+                                .lineLimit(2)
+                                .foregroundColor(.black)
+                                .allowsTightening(true)
+                        }
+                    }
                 }
             }
             .frame(maxWidth:.infinity)
@@ -23,8 +40,4 @@ struct Scroll: View {
     }
 }
 
-struct Scroll_Previews: PreviewProvider {
-    static var previews: some View {
-        Scroll()
-    }
-}
+

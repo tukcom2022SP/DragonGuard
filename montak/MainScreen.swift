@@ -12,17 +12,17 @@ struct ContentView: View {
     @State var checkButtonList : Bool = false
     @State var changeScreen : Bool = false
     @State var tourTitle : String = ""
+    @State var buttonIndex : Int = 0
     init(){ self.value.getData()}
     
     func timer(){
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)){
             var mItem: Item
-            mItem = self.value.getFirstItem()
+            mItem = self.value.getItemInfo()[2]
             self.changeScreen = true
             if let addr = mItem.address {print(addr)}
             self.tourTitle = mItem.title
-            print("\(mItem.repPhoto)")
-            
+            print("\(mItem.title)")
         }
     }
     
@@ -38,7 +38,7 @@ struct ContentView: View {
                         .frame (height: 50)
                     HStack{
                         if(checkButtonList){
-                           Scroll()
+                            Scroll(index: buttonIndex,mItem: value.getItemInfo())
                                 .frame(width: 230, height: 550)
                                 .padding(.top)
                         }
@@ -60,23 +60,36 @@ struct ContentView: View {
                         Button(action: {
                             print("먹거리")
                             self.checkButtonList = true
-                            
+                            self.buttonIndex = 0
                         }){
                             Image("mainmuk")
                                 .resizable()
                         }
                         Spacer()
-                        Button(action: {print("놀거리"); self.checkButtonList = true}){
+                        Button(action: {
+                            print("놀거리")
+                            self.checkButtonList = true
+                            self.buttonIndex = 1
+                        }){
                             Image("mainnol")
                                 .resizable()
+                            
                         }
                         Spacer()
-                        Button(action: {print("볼거리");self.checkButtonList = true}){
+                        Button(action: {
+                            print("볼거리")
+                            self.checkButtonList = true
+                            self.buttonIndex = 2
+                        }){
                             Image("mainbol")
                                 .resizable()
                         }
                         Spacer()
-                        Button(action: {print("쉴 곳");self.checkButtonList = true}){
+                        Button(action: {
+                            print("쉴 곳")
+                            self.checkButtonList = true
+                            self.buttonIndex = 3
+                        }){
                             Image("mainshuil")
                                 .resizable()
                         }
