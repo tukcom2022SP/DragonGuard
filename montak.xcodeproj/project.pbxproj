@@ -17,6 +17,7 @@
 		3B3732CA289778E600C40D3E /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732C9289778E600C40D3E /* JSON.swift */; };
 		3B3732CE28977A1000C40D3E /* ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732CD28977A1000C40D3E /* ParsingJSON.swift */; };
 		3B3732D22897964900C40D3E /* SubScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732D12897964900C40D3E /* SubScreen2.swift */; };
+		3B4E465428991EFA00222915 /* Scroll_In_Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E465328991EFA00222915 /* Scroll_In_Button.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		3B3732C9289778E600C40D3E /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		3B3732CD28977A1000C40D3E /* ParsingJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingJSON.swift; sourceTree = "<group>"; };
 		3B3732D12897964900C40D3E /* SubScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubScreen2.swift; sourceTree = "<group>"; };
+		3B4E465328991EFA00222915 /* Scroll_In_Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scroll_In_Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				3B3732CD28977A1000C40D3E /* ParsingJSON.swift */,
 				3B3732BD2897773900C40D3E /* Assets.xcassets */,
 				3B3732BF2897773900C40D3E /* Preview Content */,
+				3B4E465328991EFA00222915 /* Scroll_In_Button.swift */,
 			);
 			path = montak;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				3B3732CE28977A1000C40D3E /* ParsingJSON.swift in Sources */,
 				3B30C6922898E232001ADE41 /* Enroll&Notice.swift in Sources */,
 				3B3732D22897964900C40D3E /* SubScreen2.swift in Sources */,
+				3B4E465428991EFA00222915 /* Scroll_In_Button.swift in Sources */,
 				3B3732BC2897773800C40D3E /* MainScreen.swift in Sources */,
 				3B3732BA2897773800C40D3E /* montakApp.swift in Sources */,
 				3B3732CA289778E600C40D3E /* JSON.swift in Sources */,
