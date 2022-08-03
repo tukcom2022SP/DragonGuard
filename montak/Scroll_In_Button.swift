@@ -20,8 +20,11 @@ struct Scroll_In_Button: View {
                     .padding(.leading)
                 Text("\(mItem[index].title)")
                     .lineLimit(2)
+                    .font(Font.custom("BinggraeSamanco-Bold",size:20))
                     .foregroundColor(.black)
                     .truncationMode(.middle)
+                    
+                    
             }
         }//Button
     }

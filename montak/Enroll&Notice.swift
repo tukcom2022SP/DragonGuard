@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Enroll_Notice: View {
+    @State var alertBox : Bool
     var body: some View {
         VStack{
             Spacer()
@@ -20,19 +21,23 @@ struct Enroll_Notice: View {
             }
             Spacer()
                 .frame(height:330)
-            Button(action: {print("notice")}){
+            Button(action: {
+                print("notice")
+                self.alertBox = true
+            }){
                 Image("notice")
                     .resizable()
                     .padding(.leading)
                     .frame(width: 90, height: 90)
             }
+            .alert(isPresented: $alertBox){
+                Alert(title: Text("hi")
+                        .font(.system(size: 20)),
+                      message: Text("aaa"),
+                      dismissButton: .default(Text("close"))
+                )
+            }
             Spacer()
         }
-    }
-}
-
-struct Enroll_Notice_Previews: PreviewProvider {
-    static var previews: some View {
-        Enroll_Notice()
     }
 }
