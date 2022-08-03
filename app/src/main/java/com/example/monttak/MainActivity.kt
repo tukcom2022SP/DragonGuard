@@ -143,6 +143,9 @@ class MainActivity : Activity() {
                         listButton.textSize = 20f
                         val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
                         listButton.setTypeface(typeFace)
+                        listButton.setOnClickListener {
+
+                        }
                         content.addView(listButton)
                     }
 
