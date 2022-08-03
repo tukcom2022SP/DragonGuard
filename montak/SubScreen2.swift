@@ -10,19 +10,16 @@ import SwiftUI
 struct subScreen2: View {
     var body: some View {
         ZStack{
-            Image("monttakmain")
-                .resizable()
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack{
-                Image("whitereport")
-                
-                
-                Image("back")
-                
-                
-            }
-        }//ZStack
+                    Image("monttakmain")
+                        .resizable()
+                        .edgesIgnoringSafeArea(.all)
+                    
+                    VStack{
+                        Report_Back()
+                        .padding(.leading)
+                        .frame(width: 340, height: 660,alignment: .trailing)
+                    }
+                }//ZStack
     }
 }
 
