@@ -11,7 +11,6 @@ struct Scroll: View {
     var index : Int
     var mItem: [Item]
     
-    let field = UITextField()
     var body: some View {
         VStack{
             ZStack {
@@ -28,7 +27,7 @@ struct Scroll: View {
             }
             ScrollView{
                 VStack {
-                    ForEach(0..<self.mItem.count){ i in
+                    ForEach(0..<self.mItem.count,id:\.self){ i in
                         if((self.mItem[i].contentscd.label == "음식점") && (index == 0)){
                             Scroll_In_Button(mItem: self.mItem, index: i)
                         }
@@ -38,7 +37,7 @@ struct Scroll: View {
                         else if(self.mItem[i].contentscd.label == "숙박" && index == 3){
                             Scroll_In_Button(mItem: self.mItem, index: i)
                         }
-                        else if (self.mItem[i].contentscd.label == "축제/행사" && index == 1){
+                        else if (self.mItem[i].contentscd.label == "축제/행사" && index == 2){
                             Scroll_In_Button(mItem: self.mItem, index: i)
                         }
                         else if (self.mItem[i].contentscd.label == "테마여행" && index == 1){
