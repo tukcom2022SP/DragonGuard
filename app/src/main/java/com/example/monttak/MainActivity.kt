@@ -1,11 +1,13 @@
 package com.example.monttak
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -89,6 +91,12 @@ class MainActivity : Activity() {
 //
 //            }
 //            dlg.show()
+        }
+        notice.setOnClickListener {
+            var dialogView = View.inflate(this@MainActivity, R.layout.dlgnotice, null)
+            var dlg = AlertDialog.Builder(this@MainActivity)
+            dlg.setView(dialogView)
+            dlg.show()
         }
     }
     fun JsonArray() : JSONArray{
