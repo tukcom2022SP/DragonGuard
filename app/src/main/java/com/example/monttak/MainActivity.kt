@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,6 +22,11 @@ class MainActivity : Activity() {
 
         val intent = Intent(this, LoadingActivity::class.java)
         startActivity(intent)
+
+        val mThread = MukThread()
+        mThread.start()
+        mThread.join()
+
         mainmuk.setOnClickListener {
 //            val listText = Button(this@MainActivity)
 //            listText.setText("id")

@@ -32,7 +32,25 @@
             android:layout_height="match_parent"
             android:layout_weight="5.2"
             android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/textbar">
 
+                <TextView
+                    android:id="@+id/textbar1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/mokwoosoosimgyul"
+                    android:text=""
+                    android:textColor="#020202"
+                    android:textSize="30dp" />
+
+            </LinearLayout>
             <ScrollView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -43,25 +61,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@drawable/textbar">
 
-                        <TextView
-                            android:id="@+id/textbar1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/binggraesamancobold"
-                            android:text=""
-                            android:textColor="#020202"
-                            android:textSize="30dp" />
-
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
