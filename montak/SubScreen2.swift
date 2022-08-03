@@ -7,24 +7,29 @@
 
 import SwiftUI
 
-struct subScreen2: View {
+struct SubScreen2: View {
     var body: some View {
         ZStack{
-                    Image("monttakmain")
-                        .resizable()
-                        .edgesIgnoringSafeArea(.all)
+            Image("monttakmain")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+            
+            HStack{
+                VStack{
                     
-                    VStack{
-                        Report_Back()
-                        .padding(.leading)
-                        .frame(width: 340, height: 660,alignment: .trailing)
-                    }
-                }//ZStack
+                    
+                }
+                Report_Back()
+                    .frame(width: 50, height: 550, alignment: .trailing)
+                
+            }
+            .frame(width: 340, height: 550)
+        }//ZStack
     }
 }
 
-struct subScreen2_Previews: PreviewProvider {
+struct SubScreen2_Previews: PreviewProvider {
     static var previews: some View {
-        subScreen2()
+        SubScreen2()
     }
 }
