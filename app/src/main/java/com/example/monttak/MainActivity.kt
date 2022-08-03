@@ -2,6 +2,7 @@ package com.example.monttak
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
@@ -23,9 +24,7 @@ class MainActivity : Activity() {
         val intent = Intent(this, LoadingActivity::class.java)
         startActivity(intent)
 
-        val mThread = MukThread()
-        mThread.start()
-        mThread.join()
+
 
         mainmuk.setOnClickListener {
 //            val listText = Button(this@MainActivity)
@@ -96,7 +95,7 @@ class MainActivity : Activity() {
 
 
         val pageNo = 1
-        val key = "rrq71a2rotyj9tqm"
+        val key = ""
         val site = "https://api.visitjeju.net/vsjApi/contents/searchList?apiKey=&${key}&locale=kr&page="+pageNo.toString()
 
         val url = URL(site)
@@ -143,6 +142,7 @@ class MainActivity : Activity() {
                         listButton.textSize = 20f
                         val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
                         listButton.setTypeface(typeFace)
+                        listButton.setTextColor(Color.BLACK)
                         listButton.setOnClickListener {
 
                         }
@@ -185,6 +185,7 @@ class MainActivity : Activity() {
                         listButton.textSize = 20f
                         val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
                         listButton.setTypeface(typeFace)
+                        listButton.setTextColor(Color.BLACK)
                         content.addView(listButton)
 
                     }
@@ -224,6 +225,7 @@ class MainActivity : Activity() {
                         listButton.textSize = 20f
                         val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
                         listButton.setTypeface(typeFace)
+                        listButton.setTextColor(Color.BLACK)
                         content.addView(listButton)
 
                     }
@@ -263,6 +265,7 @@ class MainActivity : Activity() {
                         listButton.textSize = 20f
                         val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
                         listButton.setTypeface(typeFace)
+                        listButton.setTextColor(Color.BLACK)
                         content.addView(listButton)
 
                     }

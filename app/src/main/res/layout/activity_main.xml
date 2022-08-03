@@ -46,7 +46,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/mokwoosoosimgyul"
-                    android:text=""
+                    android:text="[몬딱, 제주]"
                     android:textColor="#020202"
                     android:textSize="30dp" />
 
@@ -68,6 +68,13 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:id="@+id/content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"
+                            android:text="'몬딱, 제주'는 '모두 함께, 제주'라는 뜻의 제주 방언입니다. 육지에 사는 당신이 아름다운 섬 제주도를 만끽할 수 있도록 여러가지 정보를 제공합니다. 아래의 각 버튼을 클릭하면 정보가 나옵니다. 먹거리, 놀거리, 볼거리와 쉴 곳이 가득한 제주에서 당신의 인생에 쉼표를 찍어보세요."
+                            android:fontFamily="@font/mokwoosoosimgyul" />
 
 
                     </LinearLayout>
