@@ -18,6 +18,7 @@
 		3B3732CE28977A1000C40D3E /* ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732CD28977A1000C40D3E /* ParsingJSON.swift */; };
 		3B3732D22897964900C40D3E /* SubScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732D12897964900C40D3E /* SubScreen2.swift */; };
 		3B4E465428991EFA00222915 /* Scroll_In_Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E465328991EFA00222915 /* Scroll_In_Button.swift */; };
+		A324B687289A2FBF0049C3DE /* Report&Back.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324B686289A2FBF0049C3DE /* Report&Back.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		3B3732CD28977A1000C40D3E /* ParsingJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingJSON.swift; sourceTree = "<group>"; };
 		3B3732D12897964900C40D3E /* SubScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubScreen2.swift; sourceTree = "<group>"; };
 		3B4E465328991EFA00222915 /* Scroll_In_Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scroll_In_Button.swift; sourceTree = "<group>"; };
+		A324B686289A2FBF0049C3DE /* Report&Back.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Report&Back.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		3B3732B82897773800C40D3E /* montak */ = {
 			isa = PBXGroup;
 			children = (
+				A324B686289A2FBF0049C3DE /* Report&Back.swift */,
 				3B3732B92897773800C40D3E /* montakApp.swift */,
 				3B3732BB2897773800C40D3E /* MainScreen.swift */,
 				3B30C6912898E232001ADE41 /* Enroll&Notice.swift */,
@@ -165,6 +168,7 @@
 				3B4E465428991EFA00222915 /* Scroll_In_Button.swift in Sources */,
 				3B3732BC2897773800C40D3E /* MainScreen.swift in Sources */,
 				3B3732BA2897773800C40D3E /* montakApp.swift in Sources */,
+				A324B687289A2FBF0049C3DE /* Report&Back.swift in Sources */,
 				3B3732CA289778E600C40D3E /* JSON.swift in Sources */,
 				3B30C68E2898E108001ADE41 /* Scroll.swift in Sources */,
 			);
