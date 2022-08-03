@@ -12,7 +12,8 @@ struct Scroll_In_Button: View {
     var index : Int         //해당 정보의 인덱스
     
     var body: some View {
-        Button(action: {print("\(index)")} ){
+        
+        NavigationLink(destination: Text("hi")) {
             ZStack{
                 Image("textbar")
                     .resizable()
@@ -23,10 +24,9 @@ struct Scroll_In_Button: View {
                     .font(Font.custom("BinggraeSamanco-Bold",size:20))
                     .foregroundColor(.black)
                     .truncationMode(.middle)
-                    
-                    
             }
-        }//Button
+        }
+        
     }
 }
 
