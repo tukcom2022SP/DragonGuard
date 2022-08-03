@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0B2032289A501600FD9326 /* BinggraeSamanco-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B0B2031289A501600FD9326 /* BinggraeSamanco-Bold.ttf */; };
 		3B30C68E2898E108001ADE41 /* Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30C68D2898E108001ADE41 /* Scroll.swift */; };
 		3B30C6902898E1BF001ADE41 /* FirstNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30C68F2898E1BF001ADE41 /* FirstNotice.swift */; };
 		3B30C6922898E232001ADE41 /* Enroll&Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30C6912898E232001ADE41 /* Enroll&Notice.swift */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B0B2031289A501600FD9326 /* BinggraeSamanco-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BinggraeSamanco-Bold.ttf"; sourceTree = "<group>"; };
+		3B0B2033289A502400FD9326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3B30C68D2898E108001ADE41 /* Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scroll.swift; sourceTree = "<group>"; };
 		3B30C68F2898E1BF001ADE41 /* FirstNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstNotice.swift; sourceTree = "<group>"; };
 		3B30C6912898E232001ADE41 /* Enroll&Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enroll&Notice.swift"; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		3B3732AD2897773800C40D3E = {
 			isa = PBXGroup;
 			children = (
+				3B0B2031289A501600FD9326 /* BinggraeSamanco-Bold.ttf */,
 				3B3732B82897773800C40D3E /* montak */,
 				3B3732B72897773800C40D3E /* Products */,
 			);
@@ -67,6 +71,7 @@
 		3B3732B82897773800C40D3E /* montak */ = {
 			isa = PBXGroup;
 			children = (
+				3B0B2033289A502400FD9326 /* Info.plist */,
 				A324B686289A2FBF0049C3DE /* Report&Back.swift */,
 				3B3732B92897773800C40D3E /* montakApp.swift */,
 				3B3732BB2897773800C40D3E /* MainScreen.swift */,
@@ -150,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B3732C12897773900C40D3E /* Preview Assets.xcassets in Resources */,
+				3B0B2032289A501600FD9326 /* BinggraeSamanco-Bold.ttf in Resources */,
 				3B3732BE2897773900C40D3E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +308,7 @@
 				DEVELOPMENT_TEAM = SN5J3DYFX4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = montak/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -331,6 +338,7 @@
 				DEVELOPMENT_TEAM = SN5J3DYFX4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = montak/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
