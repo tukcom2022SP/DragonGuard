@@ -15,6 +15,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -78,6 +79,7 @@ class MainActivity : Activity() {
             val thread = MukThread()
             thread.start()
             thread.join()
+            returnMain.visibility=View.VISIBLE
 //            dlg.setPositiveButton("확인") { dialog, which ->
 //
 //            }
@@ -99,6 +101,7 @@ class MainActivity : Activity() {
             val thread = NolThread()
             thread.start()
             thread.join()
+            returnMain.visibility=View.VISIBLE
 //            dlg.setPositiveButton("확인") { dialog, which ->
 //
 //            }
@@ -120,6 +123,7 @@ class MainActivity : Activity() {
             val thread = BolThread()
             thread.start()
             thread.join()
+            returnMain.visibility=View.VISIBLE
 //            dlg.setPositiveButton("확인") { dialog, which ->
 //
 //            }
@@ -141,6 +145,7 @@ class MainActivity : Activity() {
             val thread = ShuilThread()
             thread.start()
             thread.join()
+            returnMain.visibility=View.VISIBLE
 //            dlg.setPositiveButton("확인") { dialog, which ->
 //
 //            }
@@ -152,6 +157,20 @@ class MainActivity : Activity() {
             var dlg = AlertDialog.Builder(this@MainActivity)
             dlg.setView(dialogView)
             dlg.show()
+        }
+
+        returnMain.setOnClickListener {
+            textbar1.text = "[몬딱, 제주]"
+            content.removeAllViews()
+            val appExplain = TextView(this@MainActivity)
+            appExplain.layoutParams=LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT)
+            appExplain.textSize = 20f
+            appExplain.text = "- '몬딱, 제주'는 '모두 함께, 제주'라는 뜻의 제주 방언입니다. 육지에 사는 당신이 아름다운 섬 제주도를 만끽할 수 있도록 여러가지 정보를 제공합니다.\n\n - 아래의 각 버튼을 클릭하면 정보가 나옵니다. 먹거리, 놀거리, 볼거리와 쉴 곳이 가득한 제주에서 당신의 인생에 쉼표를 찍어보세요.\n\n- 먹거리에는 식당과 카페, 놀멍에는 테마여행과 쇼핑, 볼거리에는 축제 및 행사 정보, 쉴멍에는 숙박업소 정보가 있습니다.\n\n- 이 앱의 정보는 제주관광공사의 오픈API를 받아서 제작했습니다."
+            val typeFace = Typeface.createFromAsset(assets, "mokwoosoosimgyul.ttf")
+            appExplain.setTypeface(typeFace)
+            appExplain.setTextColor(Color.BLACK)
+            content.addView(appExplain)
+            returnMain.visibility = View.INVISIBLE
         }
     }
     override fun onDestroy() { // 콜백 해제
