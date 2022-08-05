@@ -1,7 +1,9 @@
 package com.example.monttak
 
+import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import kotlinx.android.synthetic.main.activity_second2.*
 
 class SecondActivity : AppCompatActivity() {
@@ -16,6 +18,12 @@ class SecondActivity : AppCompatActivity() {
 
         whiteback.setOnClickListener {
             finish()
+        }
+        secondnotice.setOnClickListener {
+            var dialogView = View.inflate(this@SecondActivity, R.layout.dlgnotice, null)
+            var dlg = AlertDialog.Builder(this@SecondActivity)
+            dlg.setView(dialogView)
+            dlg.show()
         }
     }
 }

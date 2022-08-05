@@ -49,7 +49,7 @@
                     android:fontFamily="@font/mokwoosoosimgyul"
                     android:text="선택한 관광지"
                     android:textColor="#020202"
-                    android:textSize="30dp" />
+                    android:textSize="25dp" />
 
             </LinearLayout>
 
@@ -105,7 +105,7 @@
                 android:layout_weight="3.5" />
 
             <ImageView
-                android:id="@+id/notice"
+                android:id="@+id/secondnotice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
