@@ -9,18 +9,24 @@ import SwiftUI
 
 struct Enroll_Notice: View {
     @State var alertBox : Bool
+    @State var backButton : Bool
     var body: some View {
         VStack{
             Spacer()
                 .frame(height:60)
-            Button(action:{print("Button")}){
-                Image("mainenroll")
-                    .resizable()
-                    .padding(.leading)
-                    .frame(width: 90, height: 90)
+            if(backButton == true){
+                Button(action:{
+                    print("Button")
+                    self.backButton = false
+                }){
+                    Image("whiteback")
+                        .resizable()
+                        .padding(.leading)
+                        .frame(width: 90, height: 90)
+                }
             }
             Spacer()
-                .frame(height:330)
+                .frame(height:450)
             Button(action: {
                 print("notice")
                 self.alertBox = true

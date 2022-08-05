@@ -13,20 +13,25 @@ struct Scroll_In_Button: View {
     
     var body: some View {
         
-        NavigationLink(destination: Text("hi")) {
-            ZStack{
-                Image("textbar")
-                    .resizable()
-                    .frame(width: 230, height: 70)
-                    .padding(.leading)
-                Text("\(mItem[index].title)")
-                    .lineLimit(2)
-                    .font(Font.custom("BinggraeSamanco-Bold",size:20))
-                    .foregroundColor(.black)
-                    .truncationMode(.middle)
-            }
-        }
+        
+            
+            NavigationLink(destination: SubScreen2(),label: {
+                
+                ZStack{
+                    Image("textbar")
+                        .resizable()
+                        .frame(width: 230, height: 70)
+                        .padding(.leading)
+                    Text("\(mItem[index].title)")
+                        .lineLimit(2)
+                        .font(Font.custom("BinggraeSamanco-Bold",size:20))
+                        .foregroundColor(.black)
+                        
+                }
+                
+             })
+            
+            
         
     }
 }
-
