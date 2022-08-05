@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct SubScreen2: View {
+    var mItem : [Item]      //JSON 정보
+    var index : Int         //해당 정보의 인덱스
+    
     var body: some View {
-        
             ZStack{
                 Image("monttakmain")
                     .resizable()
@@ -20,9 +22,7 @@ struct SubScreen2: View {
                         .frame(height: 40)
                     HStack{
                         VStack{
-                            SubScreenInfo()
-                                
-                                
+                            SubScreenInfo(mItem : mItem, index : index)
                         }
                         .frame(width: 240, height: 550,alignment: .leading)
                         .padding(.bottom)
@@ -44,13 +44,11 @@ struct SubScreen2: View {
                     
                 }
             }//ZStack
-        
-        
     }
 }
 
-struct SubScreen2_Previews: PreviewProvider {
-    static var previews: some View {
-        SubScreen2()
-    }
-}
+//struct SubScreen2_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SubScreen2(mItem, index : index)
+//    }
+//}

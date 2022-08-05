@@ -11,6 +11,7 @@ struct Scroll: View {
     var index : Int
     var mItem: [Item]
     
+    
     var body: some View {
         VStack{
             ZStack {
