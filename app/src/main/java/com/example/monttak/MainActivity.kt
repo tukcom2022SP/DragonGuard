@@ -32,7 +32,7 @@ import kotlin.system.exitProcess
 
 
 class MainActivity : Activity() {
-
+    lateinit var item : JSONArray
 
     private lateinit var cm2: ConnectivityManager
 
@@ -64,7 +64,9 @@ class MainActivity : Activity() {
 
         // NetworkInfo부분
         if (isConnectInternet() != "null") {
-
+            var nThread = NetworkThread()
+            nThread.start()
+            nThread.join()
         } else {
 
         }
@@ -73,6 +75,11 @@ class MainActivity : Activity() {
             if (isConnectInternet() == "null") {
                 Toast.makeText(this@MainActivity, "인터넷 연결 끊김", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
+            }
+            if (item==null){
+                var nThread = NetworkThread()
+                nThread.start()
+                nThread.join()
             }
             val thread = MukThread()
             thread.start()
@@ -98,6 +105,11 @@ class MainActivity : Activity() {
                 Toast.makeText(this@MainActivity, "인터넷 연결 끊김", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            if (item==null){
+                var nThread = NetworkThread()
+                nThread.start()
+                nThread.join()
+            }
             val thread = BolThread()
             thread.start()
             thread.join()
@@ -108,6 +120,11 @@ class MainActivity : Activity() {
             if (isConnectInternet() == "null") {
                 Toast.makeText(this@MainActivity, "인터넷 연결 끊김", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
+            }
+            if (item==null){
+                var nThread = NetworkThread()
+                nThread.start()
+                nThread.join()
             }
             val thread = ShuilThread()
             thread.start()
@@ -156,7 +173,7 @@ class MainActivity : Activity() {
     }
 
     //api 연동
-    fun JsonArray(): JSONArray? {
+    fun JsonArray(): JSONArray {
         val pageNo = 1
         val key = ""
         val site =
@@ -192,11 +209,14 @@ class MainActivity : Activity() {
             "없습니다."
         }
     }
-
+    inner class NetworkThread: Thread(){
+        override fun run() {
+            item = JsonArray()
+        }
+    }
     //먹거리 나열
     inner class MukThread : Thread() {
         override fun run() {
-            val item = JsonArray()
             if (item == null) {
                 return
             }
@@ -240,7 +260,6 @@ class MainActivity : Activity() {
     //놀멍 나열
     inner class NolThread : Thread() {
         override fun run() {
-            val item = JsonArray()
             if (item == null) {
                 return
             }
@@ -281,7 +300,6 @@ class MainActivity : Activity() {
     //볼거리 나열
     inner class BolThread : Thread() {
         override fun run() {
-            val item = JsonArray()
             if (item == null) {
                 return
             }
@@ -321,7 +339,6 @@ class MainActivity : Activity() {
     //쉴멍 구현
     inner class ShuilThread : Thread() {
         override fun run() {
-            val item = JsonArray()
             if (item == null) {
                 return
             }
