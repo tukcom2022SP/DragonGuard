@@ -93,6 +93,11 @@ class MainActivity : Activity() {
                 Toast.makeText(this@MainActivity, "인터넷 연결 끊김", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            if (item==null){
+                var nThread = NetworkThread()
+                nThread.start()
+                nThread.join()
+            }
             val thread = NolThread()
             thread.start()
             thread.join()
