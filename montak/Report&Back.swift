@@ -11,17 +11,23 @@ struct Report_Back: View {
     var body: some View {
         VStack{
             Spacer()
-                .frame(height:60)
-            Button(action:{print("Button")}){
-                Image("whitereport")
+                .frame(height:30)
+            Button(action:{
+                print("Button")
+                
+            }){
+                Image("whiteback")
                     .resizable()
                     .padding(.leading)
                     .frame(width: 90, height: 90)
             }
             Spacer()
                 .frame(height:330)
-            Button(action: {print("Button")}){
-                Image("back")
+            Button(action: {
+                print("Button")
+                
+            }){
+                Image("notice")
                     .resizable()
                     .padding(.leading)
                     .frame(width: 90, height: 90)

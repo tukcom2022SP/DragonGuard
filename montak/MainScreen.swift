@@ -9,9 +9,10 @@ import SwiftUI
 struct MainScreen: View {
     @ObservedObject var value = Parsing()
     @State var checkButtonList : Bool = false   //버튼을 눌렀을 경우 정보 목록 출력하기 위한 변수
-    @State var changeScreen : Bool = false  //시작화면에서 메인화면으로 전환하기 위한 변수
+    @State var changeScreen : Bool = true  //시작화면에서 메인화면으로 전환하기 위한 변수
     @State var buttonIndex : Int = 0    //먹거리, 놀거리, 볼거리, 쉴곳 구분하기 위한 인덱스
-    @State var alertBox : Bool = false
+    @State var alertBox : Bool = false //공지사항 다이얼로그 띄우는 변수
+    @State var backButton: Bool = false
     init(){ self.value.getData()}   //메인화면 실행시 시작하는 화면
     
     func timer(){
@@ -21,6 +22,7 @@ struct MainScreen: View {
     }
     
     var body: some View {
+        
         if(changeScreen){
             ZStack{
                 Image("monttakmain")
@@ -28,13 +30,14 @@ struct MainScreen: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack{
-                    Spacer()
-                        .frame (height: 50)
                     HStack{
                         if(checkButtonList){
+                            
                             Scroll(index: buttonIndex,mItem: value.getItemInfo())
                                 .frame(width: 230, height: 550)
                                 .padding(.top)
+                            
+                            
                         }
                         else{
                            FirstNotice()
@@ -42,9 +45,9 @@ struct MainScreen: View {
                                 .padding(.top)
                         }
                         
-                        Enroll_Notice(alertBox: alertBox)
+                        Enroll_Notice(alertBox: alertBox,backButton: backButton)
                         .padding(.leading)
-                        .frame(width: 90, height: 610,alignment: .trailing)
+                        .frame(width: 90, height: 600,alignment: .trailing)
                         
                     }//HStack
                     .frame(width: 350, height: 610)
@@ -55,6 +58,8 @@ struct MainScreen: View {
                             print("먹거리")
                             self.checkButtonList = true
                             self.buttonIndex = 0
+                            self.backButton = true
+                            
                         }){
                             Image("mainmuk")
                                 .resizable()
@@ -64,6 +69,7 @@ struct MainScreen: View {
                             print("놀거리")
                             self.checkButtonList = true
                             self.buttonIndex = 1
+                            self.backButton = true
                         }){
                             Image("mainnol")
                                 .resizable()
@@ -74,6 +80,7 @@ struct MainScreen: View {
                             print("볼거리")
                             self.checkButtonList = true
                             self.buttonIndex = 2
+                            self.backButton = true
                         }){
                             Image("mainbol")
                                 .resizable()
@@ -83,6 +90,7 @@ struct MainScreen: View {
                             print("쉴 곳")
                             self.checkButtonList = true
                             self.buttonIndex = 3
+                            self.backButton = true
                         }){
                             Image("mainshuil")
                                 .resizable()
@@ -103,6 +111,7 @@ struct MainScreen: View {
                     timer()
                 }
         }
+    
     }
 }
 
