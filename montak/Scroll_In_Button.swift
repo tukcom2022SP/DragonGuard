@@ -10,28 +10,28 @@ import SwiftUI
 struct Scroll_In_Button: View {
     var mItem : [Item]      //JSON 정보
     var index : Int         //해당 정보의 인덱스
+    @State var showModal = false
     
     var body: some View {
         
-        
-            
-            NavigationLink(destination: SubScreen2(),label: {
+        Button(action: {
+            print("textbar")
+            self.showModal = true
+        }){
+            ZStack{
+                Image("textbar")
+                    .resizable()
+                    .frame(width: 230, height: 70)
+                    .padding(.leading)
+                Text("\(mItem[index].title)")
+                    .lineLimit(2)
+                    .font(Font.custom("BinggraeSamanco-Bold",size:20))
+                    .foregroundColor(.black)
                 
-                ZStack{
-                    Image("textbar")
-                        .resizable()
-                        .frame(width: 230, height: 70)
-                        .padding(.leading)
-                    Text("\(mItem[index].title)")
-                        .lineLimit(2)
-                        .font(Font.custom("BinggraeSamanco-Bold",size:20))
-                        .foregroundColor(.black)
-                        
-                }
-                
-             })
-            
-            
+            }
         
+        }.sheet(isPresented: self.$showModal){
+            SubScreen2(mItem : mItem, index : index)
+        }
     }
 }

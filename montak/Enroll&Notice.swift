@@ -14,17 +14,19 @@ struct Enroll_Notice: View {
         VStack{
             Spacer()
                 .frame(height:60)
-            if(backButton == true){
+            
                 Button(action:{
                     print("Button")
                     self.backButton = false
                 }){
-                    Image("whiteback")
-                        .resizable()
-                        .padding(.leading)
-                        .frame(width: 90, height: 90)
+                    if(backButton){
+                        Image("whiteback")
+                            .resizable()
+                            .padding(.leading)
+                            .frame(width: 90, height: 90)
+                    }
                 }
-            }
+            
             Spacer()
                 .frame(height:450)
             Button(action: {
