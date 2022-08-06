@@ -12,13 +12,19 @@ struct SubScreenInfo: View {
     var index : Int         //해당 정보의 인덱스
     
     var body: some View {
-        ZStack{
-            Image("textbar")
-                .resizable()
-                .frame(width: 230, height: 70)
-                .padding(.trailing)
-            Text(mItem[index].title)
-                .font(.system(size: 20))
+        VStack {
+            ZStack{
+                Image("textbar")
+                    .resizable()
+                    .frame(width: 230, height: 70)
+                    .padding(.trailing)
+                Text(mItem[index].title)
+                    .font(Font.custom("BinggraeSamanco-Bold",size:20))
+            }//ZStack
+            
+            
+            
+            
         }
     }
 }
