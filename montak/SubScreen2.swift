@@ -11,6 +11,7 @@ struct SubScreen2: View {
     var mItem : [Item]      //JSON 정보
     var index : Int         //해당 정보의 인덱스
     
+    
     var body: some View {
             ZStack{
                 Image("monttakmain")
@@ -28,7 +29,7 @@ struct SubScreen2: View {
                         .padding(.bottom)
                         
                         
-                        Report_Back()
+                        SubScreen_Back_Notice()
                             .frame(width: 50, height: 500, alignment: .top)
                             .padding(.bottom)
                         
@@ -47,8 +48,4 @@ struct SubScreen2: View {
     }
 }
 
-//struct SubScreen2_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SubScreen2(mItem, index : index)
-//    }
-//}
+

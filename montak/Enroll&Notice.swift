@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Enroll_Notice: View {
-    @State var alertBox : Bool
+    @State var alertBox : Bool = false
     @Binding var backButton : Bool
     @Binding var checkButtonList : Bool
     
