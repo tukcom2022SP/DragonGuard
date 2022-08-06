@@ -14,8 +14,7 @@ struct Scroll_In_Button: View {
     
     var body: some View {
         
-        Button(action: {
-            print("textbar")
+        Button(action: {//제목 리스트 버튼
             self.showModal = true
         }){
             ZStack{
@@ -32,6 +31,7 @@ struct Scroll_In_Button: View {
         
         }.sheet(isPresented: self.$showModal){
             SubScreen2(mItem : mItem, index : index)
+                
         }
     }
 }

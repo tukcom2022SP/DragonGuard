@@ -22,15 +22,51 @@ struct SubScreenInfo: View {
                     .font(Font.custom("BinggraeSamanco-Bold",size:20))
             }//ZStack
             
-            
+            VStack(alignment: .leading) {
+                
+                HStack{
+                    Text("주소:")
+                        .font(Font.custom("BinggraeSamanco-Bold",size:16))
+                    Text(mItem[index].address ?? "정보 없음")
+                        .font(Font.custom("BinggraeSamanco-Bold",size:15))
+                }
+                HStack {
+                    Text("도로명주소:")
+                        .font(Font.custom("BinggraeSamanco-Bold",size:16))
+                    Text(mItem[index].roadaddress ?? "정보 없음")
+                        .font(Font.custom("BinggraeSamanco-Bold",size:15))
+                }
+                
+                HStack {
+                    Text("정보:")
+                        .font(Font.custom("BinggraeSamanco-Bold",size:16))
+                    Text(mItem[index].introduction ?? "정보 없음")
+                        .font(Font.custom("BinggraeSamanco-Bold",size:15))
+                }
+                
+                HStack {
+                    Text("전화번호: ")
+                        .font(Font.custom("BinggraeSamanco-Bold",size:16))
+                    Text(mItem[index].phoneno ?? "정보 없음")
+                        .font(Font.custom("BinggraeSamanco-Bold",size:15))
+                }
+                
+                Image(systemName: "image")
+                    .data(url: URL(string: mItem[index].repPhoto?.photoid.imgpath ?? "")!)
+                    .frame(width: 150, height: 150, alignment: .leading)
+            }
             
             
         }
     }
 }
 
-//struct SubScreenInfo_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SubScreenInfo()
-//    }
-//}
+extension Image{
+    func data(url:URL) -> Self{
+        if let data = try? Data(contentsOf: url){
+            return Image(uiImage: UIImage(data:data)!)
+                .resizable()
+        }
+        return  self.resizable()
+    }
+}
