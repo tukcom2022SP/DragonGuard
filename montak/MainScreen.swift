@@ -13,6 +13,7 @@ struct MainScreen: View {
     @State var buttonIndex : Int = 0    //먹거리, 놀거리, 볼거리, 쉴곳 구분하기 위한 인덱스
     @State var alertBox : Bool = false //공지사항 다이얼로그 띄우는 변수
     @State var backButton: Bool = false
+    
     init(){ self.value.getData()}   //메인화면 실행시 시작하는 화면
     
     func timer(){
@@ -45,7 +46,7 @@ struct MainScreen: View {
                                 .padding(.top)
                         }
                         
-                        Enroll_Notice(alertBox: alertBox,backButton: backButton)
+                        Enroll_Notice(alertBox: alertBox,backButton: $backButton,checkButtonList: $checkButtonList)
                         .padding(.leading)
                         .frame(width: 90, height: 600,alignment: .trailing)
                         
