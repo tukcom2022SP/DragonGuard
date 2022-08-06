@@ -41,9 +41,13 @@ struct Enroll_Notice: View {
                     .frame(width: 90, height: 90)
             }
             .alert(isPresented: $alertBox){
-                Alert(title: Text("hi")
+                Alert(title: Text("'몬딱, 제주'")
                         .font(.system(size: 20)),
-                      message: Text("aaa"),
+                      message: Text("""
+                        v1.0
+                        Copyright. 2022. Dragonguard.
+                        All rights reserved
+                        """),
                       dismissButton: .default(Text("close"))
                 )
             }
