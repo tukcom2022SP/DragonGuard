@@ -10,7 +10,7 @@ import SwiftUI
 struct SubScreenInfo: View {
     var mItem : [Item]      //JSON 정보
     var index : Int         //해당 정보의 인덱스
-    
+    @State var check : Bool = false
     var body: some View {
         VStack {
             ZStack{
@@ -50,10 +50,24 @@ struct SubScreenInfo: View {
                     Text(mItem[index].phoneno ?? "정보 없음")
                         .font(Font.custom("BinggraeSamanco-Bold",size:15))
                 }
+               
+                
+//                Button(action: {
+//                    self.check = true
+//                }){
+//                    Text("HI")
+//                }
+//                .sheet(isPresented: self.$check){
+                    KakaoMap()
+                        .frame(width: 100, height: 100)       
+//                }
+                
                 
                 Image(systemName: "image")
                     .data(url: URL(string: mItem[index].repPhoto?.photoid.imgpath ?? "")!)
                     .frame(width: 150, height: 150, alignment: .leading)
+                    
+                   
             }
             
             
