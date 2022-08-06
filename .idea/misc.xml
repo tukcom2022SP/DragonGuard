@@ -9,6 +9,10 @@
         <entry key="..\:/Users/sys/OneDrive/Desktop/22_summer/DragonGuard/app/src/main/res/layout/dlgmuk.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/sys/OneDrive/Desktop/22_summer/DragonGuard/app/src/main/res/layout/dlgnotice.xml" value="0.245018115942029" />
         <entry key="..\:/Users/sys/OneDrive/Desktop/22_summer/DragonGuard/app/src/main/res/layout/monttakpause.xml" value="0.36614583333333334" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.15670289855072464" />
+        <entry key="app/src/main/res/layout/activity_second2.xml" value="0.26403985507246375" />
+        <entry key="app/src/main/res/layout/dlgnotice.xml" value="0.26403985507246375" />
+        <entry key="app/src/main/res/layout/monttakpause.xml" value="0.23143115942028986" />
       </map>
     </option>
   </component>
@@ -17,5 +21,8 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="SuppressKotlinCodeStyleNotification">
+    <option name="disableForAll" value="true" />
   </component>
 </project>

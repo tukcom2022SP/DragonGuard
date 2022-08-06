@@ -6,7 +6,10 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
-import android.net.*
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkInfo
+import android.net.NetworkRequest
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -14,7 +17,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.notice
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -23,7 +25,7 @@ import java.net.URL
 
 
 class MainActivity : Activity() {
-    lateinit var item : JSONArray
+    lateinit var item: JSONArray
 
     private lateinit var cm2: ConnectivityManager
 
@@ -67,14 +69,13 @@ class MainActivity : Activity() {
                 Toast.makeText(this@MainActivity, "인터넷 연결 끊김", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (item==null){
+            if (item == null) {
                 var nThread = NetworkThread()
                 nThread.start()
                 nThread.join()
             }
-            val thread = MukThread()
-            thread.start()
-            thread.join()
+            MukThread()
+
             returnMain.visibility = View.VISIBLE
         }
 
@@ -84,14 +85,12 @@ class MainActivity : Activity() {
                 Toast.makeText(this@MainActivity, "인터넷 연결 끊김", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (item==null){
+            if (item == null) {
                 var nThread = NetworkThread()
                 nThread.start()
                 nThread.join()
             }
-            val thread = NolThread()
-            thread.start()
-            thread.join()
+            NolThread()
             returnMain.visibility = View.VISIBLE
         }
 
@@ -101,14 +100,12 @@ class MainActivity : Activity() {
                 Toast.makeText(this@MainActivity, "인터넷 연결 끊김", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (item==null){
+            if (item == null) {
                 var nThread = NetworkThread()
                 nThread.start()
                 nThread.join()
             }
-            val thread = BolThread()
-            thread.start()
-            thread.join()
+            BolThread()
             returnMain.visibility = View.VISIBLE
         }
         //쉴멍 버튼 구현
@@ -117,14 +114,12 @@ class MainActivity : Activity() {
                 Toast.makeText(this@MainActivity, "인터넷 연결 끊김", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (item==null){
+            if (item == null) {
                 var nThread = NetworkThread()
                 nThread.start()
                 nThread.join()
             }
-            val thread = ShuilThread()
-            thread.start()
-            thread.join()
+            ShuilThread()
             returnMain.visibility = View.VISIBLE
         }
 
@@ -205,167 +200,146 @@ class MainActivity : Activity() {
             "없습니다."
         }
     }
-    inner class NetworkThread: Thread(){
+
+    inner class NetworkThread : Thread() {
         override fun run() {
             item = JsonArray()
         }
     }
+
     //먹거리 나열
-    inner class MukThread : Thread() {
-        override fun run() {
-            if (item == null) {
-                return
-            }
-            runOnUiThread {
-                content.removeAllViews()
-                for (i in 0 until item.length()) {
-                    val jObject = item.getJSONObject(i)
+    fun MukThread() {
+        if (item == null) {
+            return
+        }
+        content.removeAllViews()
+        for (i in 0 until item.length()) {
+            val jObject = item.getJSONObject(i)
 //                    textView.append("${i+1}. 주소: ${ JSON_Parse(jObject,"title")}\n")
-                    val jContentscd = jObject.getJSONObject("contentscd")
+            val jContentscd = jObject.getJSONObject("contentscd")
 //                    val jLabel = jContentscd.getJSONObject("label")
 //                    textbar2.append("${JSON_Parse(jContentscd ,"label")}\n")
 //                    textbar2.append("${JSON_Parse(jObject, "title")}\n")
 //                    textbar2.append("${JSON_Parse(jObject, "title")}\n")
-                    val jLabel = JSON_Parse(jContentscd, "label")
-                    if (jLabel == "음식점") {
-                        textbar1.setText("[먹거리]")
-                        val listButton = Button(this@MainActivity)
-                        listButton.setText("${JSON_Parse(jObject, "title")}")
-                        listButton.layoutParams = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                        )
-                        listButton.setBackgroundResource(R.drawable.textbar)
-                        listButton.textSize = 20f
-                        val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
-                        listButton.setTypeface(typeFace)
-                        listButton.setTextColor(Color.BLACK)
-                        listButton.setOnClickListener {
-                            var intent = Intent(applicationContext, SecondActivity::class.java)
-                            intent.putExtra("title","${JSON_Parse(jObject, "title")}")
-                            startActivity(intent)
-                        }
-                        content.addView(listButton)
-                    }
-
+            val jLabel = JSON_Parse(jContentscd, "label")
+            if (jLabel == "음식점") {
+                textbar1.setText("[먹거리]")
+                val listButton = Button(this@MainActivity)
+                listButton.setText("${JSON_Parse(jObject, "title")}")
+                listButton.layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+                listButton.setBackgroundResource(R.drawable.textbar)
+                listButton.textSize = 20f
+                val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
+                listButton.setTypeface(typeFace)
+                listButton.setTextColor(Color.BLACK)
+                listButton.setOnClickListener {
+                    var intent = Intent(applicationContext, SecondActivity::class.java)
+                    intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
+                    startActivity(intent)
                 }
+                content.addView(listButton)
             }
         }
     }
 
     //놀멍 나열
-    inner class NolThread : Thread() {
-        override fun run() {
-            if (item == null) {
-                return
-            }
-            runOnUiThread {
-                content.removeAllViews()
-                for (i in 0 until item.length()) {
-                    val jObject = item.getJSONObject(i)
-                    val jContentscd = jObject.getJSONObject("contentscd")
-                    val jLabel = JSON_Parse(jContentscd, "label")
-                    if (jLabel == "테마여행" || jLabel == "쇼핑") {
-                        textbar1.setText("[놀멍]")
-                        val listButton = Button(this@MainActivity)
-                        listButton.setText("${JSON_Parse(jObject, "title")}")
-                        listButton.layoutParams = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                        )
-                        listButton.setBackgroundResource(R.drawable.textbar)
-                        listButton.textSize = 20f
-                        val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
-                        listButton.setTypeface(typeFace)
-                        listButton.setTextColor(Color.BLACK)
-                        listButton.setOnClickListener {
-                            var intent = Intent(applicationContext, SecondActivity::class.java)
-                            intent.putExtra("title","${JSON_Parse(jObject, "title")}")
-                            startActivity(intent)
-                        }
-                        content.addView(listButton)
-
-                    }
-
+    fun NolThread() {
+        if (item == null) {
+            return
+        }
+        content.removeAllViews()
+        for (i in 0 until item.length()) {
+            val jObject = item.getJSONObject(i)
+            val jContentscd = jObject.getJSONObject("contentscd")
+            val jLabel = JSON_Parse(jContentscd, "label")
+            if (jLabel == "테마여행" || jLabel == "쇼핑") {
+                textbar1.setText("[놀멍]")
+                val listButton = Button(this@MainActivity)
+                listButton.setText("${JSON_Parse(jObject, "title")}")
+                listButton.layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+                listButton.setBackgroundResource(R.drawable.textbar)
+                listButton.textSize = 20f
+                val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
+                listButton.setTypeface(typeFace)
+                listButton.setTextColor(Color.BLACK)
+                listButton.setOnClickListener {
+                    var intent = Intent(applicationContext, SecondActivity::class.java)
+                    intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
+                    startActivity(intent)
                 }
+                content.addView(listButton)
             }
         }
-
     }
 
     //볼거리 나열
-    inner class BolThread : Thread() {
-        override fun run() {
-            if (item == null) {
-                return
-            }
-            runOnUiThread {
-                content.removeAllViews()
-                for (i in 0 until item.length()) {
-                    val jObject = item.getJSONObject(i)
-                    val jContentscd = jObject.getJSONObject("contentscd")
-                    val jLabel = JSON_Parse(jContentscd, "label")
-                    if (jLabel == "정보" || jLabel == "축제/행사") {
-                        textbar1.setText("[볼거리]")
-                        val listButton = Button(this@MainActivity)
-                        listButton.setText("${JSON_Parse(jObject, "title")}")
-                        listButton.layoutParams = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                        )
-                        listButton.setBackgroundResource(R.drawable.textbar)
-                        listButton.textSize = 20f
-                        val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
-                        listButton.setTypeface(typeFace)
-                        listButton.setTextColor(Color.BLACK)
-                        listButton.setOnClickListener {
-                            var intent = Intent(applicationContext, SecondActivity::class.java)
-                            intent.putExtra("title","${JSON_Parse(jObject, "title")}")
-                            startActivity(intent)
-                        }
-                        content.addView(listButton)
-
-                    }
-
+    fun BolThread() {
+        if (item == null) {
+            return
+        }
+        content.removeAllViews()
+        for (i in 0 until item.length()) {
+            val jObject = item.getJSONObject(i)
+            val jContentscd = jObject.getJSONObject("contentscd")
+            val jLabel = JSON_Parse(jContentscd, "label")
+            if (jLabel == "정보" || jLabel == "축제/행사") {
+                textbar1.setText("[볼거리]")
+                val listButton = Button(this@MainActivity)
+                listButton.setText("${JSON_Parse(jObject, "title")}")
+                listButton.layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+                listButton.setBackgroundResource(R.drawable.textbar)
+                listButton.textSize = 20f
+                val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
+                listButton.setTypeface(typeFace)
+                listButton.setTextColor(Color.BLACK)
+                listButton.setOnClickListener {
+                    var intent = Intent(applicationContext, SecondActivity::class.java)
+                    intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
+                    startActivity(intent)
                 }
+                content.addView(listButton)
             }
         }
     }
 
     //쉴멍 구현
-    inner class ShuilThread : Thread() {
-        override fun run() {
-            if (item == null) {
-                return
-            }
-            runOnUiThread {
-                content.removeAllViews()
-                for (i in 0 until item.length()) {
-                    val jObject = item.getJSONObject(i)
-                    val jContentscd = jObject.getJSONObject("contentscd")
-                    val jLabel = JSON_Parse(jContentscd, "label")
-                    if (jLabel == "숙박") {
-                        textbar1.setText("[쉴멍]")
-                        val listButton = Button(this@MainActivity)
-                        listButton.setText("${JSON_Parse(jObject, "title")}")
-                        listButton.layoutParams = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                        )
-                        listButton.setBackgroundResource(R.drawable.textbar)
-                        listButton.textSize = 20f
-                        val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
-                        listButton.setTypeface(typeFace)
-                        listButton.setTextColor(Color.BLACK)
-                        listButton.setOnClickListener {
-                            var intent = Intent(applicationContext, SecondActivity::class.java)
-                            intent.putExtra("title","${JSON_Parse(jObject, "title")}")
-                            startActivity(intent)
-                        }
-                        content.addView(listButton)
-                    }
-
+    fun ShuilThread() {
+        if (item == null) {
+            return
+        }
+        content.removeAllViews()
+        for (i in 0 until item.length()) {
+            val jObject = item.getJSONObject(i)
+            val jContentscd = jObject.getJSONObject("contentscd")
+            val jLabel = JSON_Parse(jContentscd, "label")
+            if (jLabel == "숙박") {
+                textbar1.setText("[쉴멍]")
+                val listButton = Button(this@MainActivity)
+                listButton.setText("${JSON_Parse(jObject, "title")}")
+                listButton.layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+                listButton.setBackgroundResource(R.drawable.textbar)
+                listButton.textSize = 20f
+                val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
+                listButton.setTypeface(typeFace)
+                listButton.setTextColor(Color.BLACK)
+                listButton.setOnClickListener {
+                    var intent = Intent(applicationContext, SecondActivity::class.java)
+                    intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
+                    startActivity(intent)
                 }
+                content.addView(listButton)
             }
         }
     }
