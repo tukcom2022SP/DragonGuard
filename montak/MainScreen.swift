@@ -9,9 +9,8 @@ import SwiftUI
 struct MainScreen: View {
     @ObservedObject var value = Parsing()
     @State var checkButtonList : Bool = false   //버튼을 눌렀을 경우 정보 목록 출력하기 위한 변수
-    @State var changeScreen : Bool = true  //시작화면에서 메인화면으로 전환하기 위한 변수
+    @State var changeScreen : Bool = false  //시작화면에서 메인화면으로 전환하기 위한 변수
     @State var buttonIndex : Int = 0    //먹거리, 놀거리, 볼거리, 쉴곳 구분하기 위한 인덱스
-    @State var alertBox : Bool = false //공지사항 다이얼로그 띄우는 변수
     @State var backButton: Bool = false
     
     init(){ self.value.getData()}   //메인화면 실행시 시작하는 화면
@@ -46,7 +45,7 @@ struct MainScreen: View {
                                 .padding(.top)
                         }
                         
-                        Enroll_Notice(alertBox: alertBox,backButton: $backButton,checkButtonList: $checkButtonList)
+                        Enroll_Notice(backButton: $backButton,checkButtonList: $checkButtonList)
                         .padding(.leading)
                         .frame(width: 90, height: 600,alignment: .trailing)
                         
@@ -55,8 +54,7 @@ struct MainScreen: View {
                     
                     Spacer()
                     HStack{
-                        Button(action: {
-                            print("먹거리")
+                        Button(action: {//먹거리
                             self.checkButtonList = true
                             self.buttonIndex = 0
                             self.backButton = true
@@ -66,8 +64,7 @@ struct MainScreen: View {
                                 .resizable()
                         }
                         Spacer()
-                        Button(action: {
-                            print("놀거리")
+                        Button(action: {//놀거리
                             self.checkButtonList = true
                             self.buttonIndex = 1
                             self.backButton = true
@@ -77,8 +74,7 @@ struct MainScreen: View {
                             
                         }
                         Spacer()
-                        Button(action: {
-                            print("볼거리")
+                        Button(action: {//볼거리
                             self.checkButtonList = true
                             self.buttonIndex = 2
                             self.backButton = true
@@ -87,8 +83,7 @@ struct MainScreen: View {
                                 .resizable()
                         }
                         Spacer()
-                        Button(action: {
-                            print("쉴 곳")
+                        Button(action: {//쉴곳
                             self.checkButtonList = true
                             self.buttonIndex = 3
                             self.backButton = true
