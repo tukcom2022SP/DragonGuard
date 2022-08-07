@@ -12,6 +12,7 @@ struct montakApp: App {
     var body: some Scene {
         WindowGroup {
             MainScreen()
+            
         }
     }
 }

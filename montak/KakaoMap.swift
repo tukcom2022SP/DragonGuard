@@ -6,16 +6,14 @@
 //
 
 import SwiftUI
-import Foundation
-import MapKit
 
 struct KakaoMap: UIViewRepresentable {
     
     
-    
     func makeUIView(context: Context) -> MTMapView {
+
         print("맵 생성")
-        ViewController().viewDidLoad()
+        
         
         return MTMapView()
     }
@@ -24,5 +22,4 @@ struct KakaoMap: UIViewRepresentable {
         print("업데이트완료")
     }
     
- 
 }
