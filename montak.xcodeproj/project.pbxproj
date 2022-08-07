@@ -22,6 +22,7 @@
 		3B3732CA289778E600C40D3E /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732C9289778E600C40D3E /* JSON.swift */; };
 		3B3732CE28977A1000C40D3E /* ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732CD28977A1000C40D3E /* ParsingJSON.swift */; };
 		3B3732D22897964900C40D3E /* SubScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3732D12897964900C40D3E /* SubScreen2.swift */; };
+		3B3B2BD8289F9487008D2AEE /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3B2BD7289F9487008D2AEE /* test.swift */; };
 		3B4E465428991EFA00222915 /* Scroll_In_Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E465328991EFA00222915 /* Scroll_In_Button.swift */; };
 		3BC46492289E7A4800971B04 /* net.daum.MobileMap.docset in Resources */ = {isa = PBXBuildFile; fileRef = 3BC46373289E7A4800971B04 /* net.daum.MobileMap.docset */; };
 		3BC46493289E7A4800971B04 /* setupDocsetDocument.rb in Resources */ = {isa = PBXBuildFile; fileRef = 3BC46374289E7A4800971B04 /* setupDocsetDocument.rb */; };
@@ -324,6 +325,7 @@
 		3B3732C9289778E600C40D3E /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		3B3732CD28977A1000C40D3E /* ParsingJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingJSON.swift; sourceTree = "<group>"; };
 		3B3732D12897964900C40D3E /* SubScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubScreen2.swift; sourceTree = "<group>"; };
+		3B3B2BD7289F9487008D2AEE /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		3B4E465328991EFA00222915 /* Scroll_In_Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scroll_In_Button.swift; sourceTree = "<group>"; };
 		3BC46373289E7A4800971B04 /* net.daum.MobileMap.docset */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = net.daum.MobileMap.docset; sourceTree = "<group>"; };
 		3BC46374289E7A4800971B04 /* setupDocsetDocument.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = setupDocsetDocument.rb; sourceTree = "<group>"; };
@@ -700,6 +702,7 @@
 				A324B686289A2FBF0049C3DE /* SubScreen_Back&Notice.swift */,
 				3B3732B92897773800C40D3E /* montakApp.swift */,
 				3B3732BB2897773800C40D3E /* MainScreen.swift */,
+				3B3B2BD7289F9487008D2AEE /* test.swift */,
 				3B30C6912898E232001ADE41 /* Enroll&Notice.swift */,
 				3B30C68F2898E1BF001ADE41 /* FirstNotice.swift */,
 				3B30C68D2898E108001ADE41 /* Scroll.swift */,
@@ -1497,6 +1500,7 @@
 				A324B687289A2FBF0049C3DE /* SubScreen_Back&Notice.swift in Sources */,
 				3B3732CA289778E600C40D3E /* JSON.swift in Sources */,
 				3B30C68E2898E108001ADE41 /* Scroll.swift in Sources */,
+				3B3B2BD8289F9487008D2AEE /* test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1611,6 +1615,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
