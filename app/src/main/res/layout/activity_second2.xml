@@ -66,18 +66,9 @@
 
                     <LinearLayout
                         android:id="@+id/secondcontent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/mokwoosoosimgyul"
-                            android:text="- '관광지 설명(뭔가 잔뜩 들어가겠지)"
-                            android:textColor="@color/black"
-                            android:textSize="20dp" />
-
 
                     </LinearLayout>
                 </LinearLayout>

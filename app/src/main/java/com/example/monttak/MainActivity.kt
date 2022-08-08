@@ -74,7 +74,7 @@ class MainActivity : Activity() {
                 nThread.start()
                 nThread.join()
             }
-            MukThread()
+            MukFun()
 
             returnMain.visibility = View.VISIBLE
         }
@@ -90,7 +90,7 @@ class MainActivity : Activity() {
                 nThread.start()
                 nThread.join()
             }
-            NolThread()
+            NolFun()
             returnMain.visibility = View.VISIBLE
         }
 
@@ -105,7 +105,7 @@ class MainActivity : Activity() {
                 nThread.start()
                 nThread.join()
             }
-            BolThread()
+            BolFun()
             returnMain.visibility = View.VISIBLE
         }
         //쉴멍 버튼 구현
@@ -119,7 +119,7 @@ class MainActivity : Activity() {
                 nThread.start()
                 nThread.join()
             }
-            ShuilThread()
+            ShuilFun()
             returnMain.visibility = View.VISIBLE
         }
 
@@ -208,7 +208,7 @@ class MainActivity : Activity() {
     }
 
     //먹거리 나열
-    fun MukThread() {
+    fun MukFun() {
         if (item == null) {
             return
         }
@@ -238,6 +238,26 @@ class MainActivity : Activity() {
                 listButton.setOnClickListener {
                     var intent = Intent(applicationContext, SecondActivity::class.java)
                     intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
+                    if(JSON_Parse(jObject, "address") != null){
+                        intent.putExtra("address", "${JSON_Parse(jObject, "address")}")
+                    }else{
+                        intent.putExtra("address", "null")
+                    }
+                    if(JSON_Parse(jObject, "roadaddress") != null){
+                        intent.putExtra("roadaddress", "${JSON_Parse(jObject, "roadaddress")}")
+                    }else{
+                        intent.putExtra("roadaddress", "null")
+                    }
+                    if(JSON_Parse(jObject, "introduction") != null){
+                        intent.putExtra("introduction", "${JSON_Parse(jObject, "introduction")}")
+                    }else{
+                        intent.putExtra("introduction", "null")
+                    }
+                    if(JSON_Parse(jObject, "phoneno") != null){
+                        intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
+                    }else{
+                        intent.putExtra("phoneno", "null")
+                    }
                     startActivity(intent)
                 }
                 content.addView(listButton)
@@ -246,7 +266,7 @@ class MainActivity : Activity() {
     }
 
     //놀멍 나열
-    fun NolThread() {
+    fun NolFun() {
         if (item == null) {
             return
         }
@@ -271,6 +291,26 @@ class MainActivity : Activity() {
                 listButton.setOnClickListener {
                     var intent = Intent(applicationContext, SecondActivity::class.java)
                     intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
+                    if(JSON_Parse(jObject, "address") != null){
+                        intent.putExtra("address", "${JSON_Parse(jObject, "address")}")
+                    }else{
+                        intent.putExtra("address", "null")
+                    }
+                    if(JSON_Parse(jObject, "roadaddress") != null){
+                        intent.putExtra("roadaddress", "${JSON_Parse(jObject, "roadaddress")}")
+                    }else{
+                        intent.putExtra("roadaddress", "null")
+                    }
+                    if(JSON_Parse(jObject, "introduction") != null){
+                        intent.putExtra("introduction", "${JSON_Parse(jObject, "introduction")}")
+                    }else{
+                        intent.putExtra("introduction", "null")
+                    }
+                    if(JSON_Parse(jObject, "phoneno") != null){
+                        intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
+                    }else{
+                        intent.putExtra("phoneno", "null")
+                    }
                     startActivity(intent)
                 }
                 content.addView(listButton)
@@ -279,7 +319,7 @@ class MainActivity : Activity() {
     }
 
     //볼거리 나열
-    fun BolThread() {
+    fun BolFun() {
         if (item == null) {
             return
         }
@@ -304,6 +344,26 @@ class MainActivity : Activity() {
                 listButton.setOnClickListener {
                     var intent = Intent(applicationContext, SecondActivity::class.java)
                     intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
+                    if(JSON_Parse(jObject, "address") != null){
+                        intent.putExtra("address", "${JSON_Parse(jObject, "address")}")
+                    }else{
+                        intent.putExtra("address", "null")
+                    }
+                    if(JSON_Parse(jObject, "roadaddress") != null){
+                        intent.putExtra("roadaddress", "${JSON_Parse(jObject, "roadaddress")}")
+                    }else{
+                        intent.putExtra("roadaddress", "null")
+                    }
+                    if(JSON_Parse(jObject, "introduction") != null){
+                        intent.putExtra("introduction", "${JSON_Parse(jObject, "introduction")}")
+                    }else{
+                        intent.putExtra("introduction", "null")
+                    }
+                    if(JSON_Parse(jObject, "phoneno") != null){
+                        intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
+                    }else{
+                        intent.putExtra("phoneno", "null")
+                    }
                     startActivity(intent)
                 }
                 content.addView(listButton)
@@ -312,7 +372,7 @@ class MainActivity : Activity() {
     }
 
     //쉴멍 구현
-    fun ShuilThread() {
+    fun ShuilFun() {
         if (item == null) {
             return
         }
@@ -337,6 +397,26 @@ class MainActivity : Activity() {
                 listButton.setOnClickListener {
                     var intent = Intent(applicationContext, SecondActivity::class.java)
                     intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
+                    if(JSON_Parse(jObject, "address") != null){
+                        intent.putExtra("address", "${JSON_Parse(jObject, "address")}")
+                    }else{
+                        intent.putExtra("address", "null")
+                    }
+                    if(JSON_Parse(jObject, "roadaddress") != null){
+                        intent.putExtra("roadaddress", "${JSON_Parse(jObject, "roadaddress")}")
+                    }else{
+                        intent.putExtra("roadaddress", "null")
+                    }
+                    if(JSON_Parse(jObject, "introduction") != null){
+                        intent.putExtra("introduction", "${JSON_Parse(jObject, "introduction")}")
+                    }else{
+                        intent.putExtra("introduction", "null")
+                    }
+                    if(JSON_Parse(jObject, "phoneno") != null){
+                        intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
+                    }else{
+                        intent.putExtra("phoneno", "null")
+                    }
                     startActivity(intent)
                 }
                 content.addView(listButton)
