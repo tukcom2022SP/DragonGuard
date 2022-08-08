@@ -28,10 +28,10 @@ struct Scroll: View {
                     .frame(width: 230, height: 70)
                     .padding(.leading)
                 
-                if(index == 0 ){Text("[먹거리]").font(Font.custom("OTMogujasusimgyeolB",size:30))}
-                else if( index == 1){Text("[놀멍]").font(Font.custom("OTMogujasusimgyeolB", size: 30))}
-                else if( index == 2){Text("[볼거리]").font(Font.custom("OTMogujasusimgyeolB", size: 30))}
-                else if( index == 3){Text("[쉴멍]").font(Font.custom("OTMogujasusimgyeolB", size: 30))}
+                if(index == 0 ){Text("[먹거리]").font(Font.custom("OTMogujasusimgyeolB",size:30)).foregroundColor(.black)}
+                else if( index == 1){Text("[놀멍]").font(Font.custom("OTMogujasusimgyeolB", size: 30)).foregroundColor(.black)}
+                else if( index == 2){Text("[볼거리]").font(Font.custom("OTMogujasusimgyeolB", size: 30)).foregroundColor(.black)}
+                else if( index == 3){Text("[쉴멍]").font(Font.custom("OTMogujasusimgyeolB", size: 30)).foregroundColor(.black)}
                 
             }
             ScrollView{

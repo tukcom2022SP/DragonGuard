@@ -12,12 +12,9 @@ struct SubScreenInfo: View {
     var value = Parsing()
     var mItem : [Item]      //JSON 정보
     var index : Int         //해당 정보의 인덱스
-    @State var position = MKCoordinateRegion(center:
-                                CLLocationCoordinate2D(
-                                    latitude:CLLocationDegrees( 37.331705),
-                                    longitude:CLLocationDegrees( -122.030737    )
-                                ),
-                            span: MKCoordinateSpan())
+    @State var check : Bool = true
+    @State var la : Double? = 0
+    @State var long : Double? = 0
     
     var body: some View {
         
@@ -30,56 +27,74 @@ struct SubScreenInfo: View {
                         .padding(.trailing)
                     Text(mItem[index].title)
                         .font(Font.custom("OTMogujasusimgyeolB",size:20))
+                        .foregroundColor(.black)
                         .lineLimit(1)
                 }//ZStack
-                
+                .onAppear{
+                    self.la = mItem[index].latitude
+                    self.long = mItem[index].longitude
+                    checkLaLong()
+                }
                 
                 VStack(alignment: .leading) {
                     HStack{
                         Text("주소)")
                             .font(Font.custom("BinggraeSamanco-Bold",size:16))
+                            .foregroundColor(.black)
                         Text(mItem[index].address ?? "정보 없음")
                             .font(Font.custom("BinggraeSamanco-Bold",size:15))
+                            .foregroundColor(.black)
                     }
                     HStack {
                         Text("도로명주소)")
                             .font(Font.custom("BinggraeSamanco-Bold",size:16))
+                            .foregroundColor(.black)
                         Text(mItem[index].roadaddress ?? "정보 없음")
                             .font(Font.custom("BinggraeSamanco-Bold",size:15))
+                            .foregroundColor(.black)
                     }
                     
                     HStack {
                         Text("정보)")
                             .font(Font.custom("BinggraeSamanco-Bold",size:16))
+                            .foregroundColor(.black)
                         Text(mItem[index].introduction ?? "정보 없음")
                             .font(Font.custom("BinggraeSamanco-Bold",size:15))
+                            .foregroundColor(.black)
                     }
                     
                     HStack {
                         Text("전화번호)")
                             .font(Font.custom("BinggraeSamanco-Bold",size:16))
+                            .foregroundColor(.black)
                         Text(mItem[index].phoneno ?? "정보 없음")
                             .font(Font.custom("BinggraeSamanco-Bold",size:15))
+                            .foregroundColor(.black)
                     }
-                    
                     
                     Image(systemName: "image")
                         .data(url: URL(string: mItem[index].repPhoto?.photoid.imgpath ?? "")!)
-                        .frame(width: 150, height: 150, alignment: .leading)
+                        .frame(width: 200, height: 200, alignment: .leading)
                     
-                    
-                    
-                    AppleMap()
+                    KakaoMap(la: la,long: long)
                         .frame(width: 200  , height: 150)
-//                    KakaoMap()
-//                        .frame(width: 100  , height: 100)
-                    
+                        .opacity(check ? 0: 1)
+                            
+                        
                     
                 }
-                
             }//VStack
-            
-            
+        }
+    }
+    
+    func checkLaLong() {
+        if(mItem[index].latitude == 0 && mItem[index].longitude == 0){
+            guard mItem[index].latitude == 0 else{ return self.check = false}
+            guard mItem[index].longitude == 0 else{ return self.check = false}
+        }
+        else{
+            guard mItem[index].latitude == nil else{ return self.check = false}
+            guard mItem[index].longitude == nil else{ return self.check = false}
         }
     }
 }

@@ -24,7 +24,6 @@
 		3B400C3328A0CDE000A616EE /* mokwu.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3B400C3228A0CDE000A616EE /* mokwu.otf */; };
 		3B400C3528A0CF0400A616EE /* MokWu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B400C3428A0CF0400A616EE /* MokWu.ttf */; };
 		3B4E465428991EFA00222915 /* Scroll_In_Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E465328991EFA00222915 /* Scroll_In_Button.swift */; };
-		3B69068628A0B59700193609 /* AppleMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69068528A0B59700193609 /* AppleMap.swift */; };
 		3BC46492289E7A4800971B04 /* net.daum.MobileMap.docset in Resources */ = {isa = PBXBuildFile; fileRef = 3BC46373289E7A4800971B04 /* net.daum.MobileMap.docset */; };
 		3BC46493289E7A4800971B04 /* setupDocsetDocument.rb in Resources */ = {isa = PBXBuildFile; fileRef = 3BC46374289E7A4800971B04 /* setupDocsetDocument.rb */; };
 		3BC46494289E7A4800971B04 /* OpenSourceNotice.md in Resources */ = {isa = PBXBuildFile; fileRef = 3BC46375289E7A4800971B04 /* OpenSourceNotice.md */; };
@@ -328,7 +327,6 @@
 		3B400C3228A0CDE000A616EE /* mokwu.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mokwu.otf; sourceTree = "<group>"; };
 		3B400C3428A0CF0400A616EE /* MokWu.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MokWu.ttf; sourceTree = "<group>"; };
 		3B4E465328991EFA00222915 /* Scroll_In_Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scroll_In_Button.swift; sourceTree = "<group>"; };
-		3B69068528A0B59700193609 /* AppleMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMap.swift; sourceTree = "<group>"; };
 		3BC46373289E7A4800971B04 /* net.daum.MobileMap.docset */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = net.daum.MobileMap.docset; sourceTree = "<group>"; };
 		3BC46374289E7A4800971B04 /* setupDocsetDocument.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = setupDocsetDocument.rb; sourceTree = "<group>"; };
 		3BC46375289E7A4800971B04 /* OpenSourceNotice.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = OpenSourceNotice.md; sourceTree = "<group>"; };
@@ -714,7 +712,6 @@
 				3B3732CD28977A1000C40D3E /* ParsingJSON.swift */,
 				3B4E465328991EFA00222915 /* Scroll_In_Button.swift */,
 				3B19207E289E7ECF00ABF7DA /* KakaoMap.swift */,
-				3B69068528A0B59700193609 /* AppleMap.swift */,
 				3B3732BD2897773900C40D3E /* Assets.xcassets */,
 				3B3732BF2897773900C40D3E /* Preview Content */,
 			);
@@ -1502,7 +1499,6 @@
 				3B3732BC2897773800C40D3E /* MainScreen.swift in Sources */,
 				3B3732BA2897773800C40D3E /* montakApp.swift in Sources */,
 				A324B687289A2FBF0049C3DE /* SubScreen_Back&Notice.swift in Sources */,
-				3B69068628A0B59700193609 /* AppleMap.swift in Sources */,
 				3B3732CA289778E600C40D3E /* JSON.swift in Sources */,
 				3B30C68E2898E108001ADE41 /* Scroll.swift in Sources */,
 			);
@@ -1652,6 +1648,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1662,7 +1659,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = montak/KakaoBridgeHeader.h;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1690,6 +1687,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1701,7 +1699,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = montak/KakaoBridgeHeader.h;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
