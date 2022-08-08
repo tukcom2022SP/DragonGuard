@@ -20,6 +20,7 @@ struct FirstNotice: View {
                 Text("[몬딱, 제주]")
                     .padding(.leading)
                     .font(Font.custom("BinggraeSamanco-Bold",size:30))
+                    .foregroundColor(.black)
             }
             Spacer()
                 .frame(height:20)
@@ -34,6 +35,7 @@ struct FirstNotice: View {
                 """)
                 .padding(.leading)
                 .font(Font.custom("BinggraeSamanco-Bold",size:20))
+                .foregroundColor(.black)
             
         }
     }
