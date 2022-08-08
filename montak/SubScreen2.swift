@@ -25,7 +25,7 @@ struct SubScreen2: View {
                         VStack{
                             SubScreenInfo(mItem : mItem, index : index)
                         }
-                        .frame(width: 240, height: 550,alignment: .leading)
+                        .frame(width: 240, height: 450,alignment: .leading)
                         .padding(.bottom)
                         
                         
