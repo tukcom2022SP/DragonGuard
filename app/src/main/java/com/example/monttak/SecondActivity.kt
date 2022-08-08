@@ -2,19 +2,36 @@ package com.example.monttak
 
 
 import android.app.AlertDialog
+import android.content.ContentValues.TAG
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_second2.*
-import kotlinx.android.synthetic.main.map.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import net.daum.mf.map.api.MapPOIItem
+import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
+import java.net.URL
 
 
 class SecondActivity : AppCompatActivity() {
+    lateinit var address: String
+    lateinit var roadaddress: String
+    lateinit var introduction: String
+    lateinit var phoneno: String
+    lateinit var thumbnail: String
+    lateinit var bit: Bitmap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second2)
@@ -22,20 +39,119 @@ class SecondActivity : AppCompatActivity() {
 
         var intent = intent
         val titleBar = intent.getStringExtra("title")
-        val address = intent.getStringExtra("address")
-        val roadaddress = intent.getStringExtra("roadaddress")
-        val introduction = intent.getStringExtra("introduction")
-        val phoneno = intent.getStringExtra("phoneno")
+        address = intent.getStringExtra("address")!!
+        roadaddress = intent.getStringExtra("roadaddress")!!
+        introduction = intent.getStringExtra("introduction")!!
+        phoneno = intent.getStringExtra("phoneno")!!
+        thumbnail = intent.getStringExtra("thumbnailpath")!!
+        var latitude = intent.getDoubleExtra("latitude",0.0)
+        var longitude = intent.getDoubleExtra("longitude",0.0)
+
+
+
+
+        secondcontent.removeAllViews()
+
+        secondbar.text = titleBar
+        arrangeView("주소")
+        arrangeView("도로명주소")
+        arrangeView("정보")
+        arrangeView("전화번호")
+
+        val corutin = CoroutineScope(Dispatchers.Main)
+        corutin.launch {
+            val originalDeferred = corutin.async(Dispatchers.IO) {
+                getOriginalBitmap()
+            }
+            val originalBitmap = originalDeferred.await()
+            loadImage(originalBitmap)
+        }
+
+        mapView(longitude,latitude)
+
+        whiteback.setOnClickListener {
+            finish()
+        }
+        secondnotice.setOnClickListener {
+            var dialogView = View.inflate(this@SecondActivity, R.layout.dlgnotice, null)
+            var dlg = AlertDialog.Builder(this@SecondActivity)
+            dlg.setView(dialogView)
+            dlg.show()
+        }
+    }
+
+    fun mapView(longitude:Double, latitude:Double){
 
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
+        var myLinear = LinearLayout(this@SecondActivity)
+        myLinear.orientation = LinearLayout.VERTICAL
+        myLinear.layoutParams = params
+
+        val mapView = MapView(this@SecondActivity)
+        mapView.layoutParams = params
+        if(latitude != 0.0){
+            mapView.setMapCenterPoint(MapPoint.mapPointWithCONGCoord(latitude,longitude),true)
+            mapView.setZoomLevel(7, true)
+            mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(33.41, 126.52), 9, true)
+            mapView.zoomIn(true)
+        }else{
+            return
+        }
+        val marker = MapPOIItem()
+        marker.itemName = "Default Marker"
+        marker.tag = 0
+        marker.mapPoint = mapView.mapCenterPoint
+        marker.markerType = MapPOIItem.MarkerType.RedPin // 기본으로 제공하는 BluePin 마커 모양.
+
+        marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
+        mapView.addPOIItem(marker)
+
+        myLinear.addView(mapView)
+        secondcontent.addView(myLinear)
+        Log.d(TAG, "Log ----- Map")
+
+    }
+
+
+    fun getOriginalBitmap(): Bitmap =
+        URL(thumbnail).openStream().use {
+            BitmapFactory.decodeStream(it)
+        }
+
+    private fun loadImage(bmp: Bitmap) {
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        var myLinear = LinearLayout(this@SecondActivity)
+        myLinear.orientation = LinearLayout.VERTICAL
+        myLinear.layoutParams = params
+
+        var myImg = LinearLayout(this@SecondActivity)
+        myImg.orientation = LinearLayout.VERTICAL
+        myImg.layoutParams = params
+
+        var imageView = ImageView(this@SecondActivity)
+        imageView.layoutParams = params
+        imageView.setImageBitmap(bmp)
+        imageView.visibility = View.VISIBLE
+
+        myImg.addView(imageView)
+        myLinear.addView(myImg)
+        secondcontent.addView(myLinear)
+        Log.d(TAG, "Log ----- Image")
+    }
+
+    fun arrangeView(part: String) {
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
         val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
-        secondcontent.removeAllViews()
-
-        secondbar.text = titleBar
-        if(address != "null"){
+        if (part == "주소") {
             var myLinear = LinearLayout(this)
             myLinear.orientation = LinearLayout.HORIZONTAL
             myLinear.layoutParams = params
@@ -53,53 +169,24 @@ class SecondActivity : AppCompatActivity() {
             extitle.setTypeface(typeFace)
 
             var excontent = TextView(this)
-            excontent.text = "${address}\n"
+            if (address != "null") {
+                excontent.text = "${address}\n"
+            } else {
+                excontent.text = "정보 없음\n"
+            }
             excontent.layoutParams = params
             excontent.setTextColor(Color.BLACK)
             excontent.setTypeface(typeFace)
 
-            extitle.textSize = 15f
-            excontent.textSize = 15f
+            extitle.textSize = 18f
+            excontent.textSize = 18f
 
             myextitle.addView(extitle)
             myexcontent.addView(excontent)
             myLinear.addView(myextitle)
             myLinear.addView(myexcontent)
             secondcontent.addView(myLinear)
-
-        }else{
-            var myLinear = LinearLayout(this)
-            myLinear.orientation = LinearLayout.HORIZONTAL
-            myLinear.layoutParams = params
-            var myextitle = LinearLayout(this)
-            myextitle.orientation = LinearLayout.VERTICAL
-            myextitle.layoutParams = params
-            var myexcontent = LinearLayout(this)
-            myexcontent.orientation = LinearLayout.VERTICAL
-            myexcontent.layoutParams = params
-
-            var extitle = TextView(this)
-            extitle.text = "주소)          \n"
-            extitle.layoutParams = params
-            extitle.setTextColor(Color.BLACK)
-            extitle.setTypeface(typeFace)
-
-            var excontent = TextView(this)
-            excontent.text = "정보 없음\n"
-            excontent.layoutParams = params
-            excontent.setTextColor(Color.BLACK)
-            excontent.setTypeface(typeFace)
-
-            extitle.textSize = 15f
-            excontent.textSize = 15f
-
-            myextitle.addView(extitle)
-            myexcontent.addView(excontent)
-            myLinear.addView(myextitle)
-            myLinear.addView(myexcontent)
-            secondcontent.addView(myLinear)
-        }
-        if(roadaddress != "null"){
+        } else if (part == "도로명주소") {
             var myLinear = LinearLayout(this)
             myLinear.orientation = LinearLayout.HORIZONTAL
             myLinear.layoutParams = params
@@ -117,52 +204,25 @@ class SecondActivity : AppCompatActivity() {
             extitle.setTypeface(typeFace)
 
             var excontent = TextView(this)
-            excontent.text = "${roadaddress}\n"
+            if (roadaddress != "null") {
+                excontent.text = "${roadaddress}\n"
+            } else {
+                excontent.text = "정보 없음\n"
+            }
+
             excontent.layoutParams = params
             excontent.setTextColor(Color.BLACK)
             excontent.setTypeface(typeFace)
 
-            extitle.textSize = 15f
-            excontent.textSize = 15f
+            extitle.textSize = 18f
+            excontent.textSize = 18f
 
             myextitle.addView(extitle)
             myexcontent.addView(excontent)
             myLinear.addView(myextitle)
             myLinear.addView(myexcontent)
             secondcontent.addView(myLinear)
-        }else{
-            var myLinear = LinearLayout(this)
-            myLinear.orientation = LinearLayout.HORIZONTAL
-            myLinear.layoutParams = params
-            var myextitle = LinearLayout(this)
-            myextitle.orientation = LinearLayout.VERTICAL
-            myextitle.layoutParams = params
-            var myexcontent = LinearLayout(this)
-            myexcontent.orientation = LinearLayout.VERTICAL
-            myexcontent.layoutParams = params
-
-            var extitle = TextView(this)
-            extitle.text = "도로명주소)   \n"
-            extitle.layoutParams = params
-            extitle.setTextColor(Color.BLACK)
-            extitle.setTypeface(typeFace)
-
-            var excontent = TextView(this)
-            excontent.text = "정보 없음\n"
-            excontent.layoutParams = params
-            excontent.setTextColor(Color.BLACK)
-            excontent.setTypeface(typeFace)
-
-            extitle.textSize = 15f
-            excontent.textSize = 15f
-
-            myextitle.addView(extitle)
-            myexcontent.addView(excontent)
-            myLinear.addView(myextitle)
-            myLinear.addView(myexcontent)
-            secondcontent.addView(myLinear)
-        }
-        if(introduction != "null"){
+        } else if (part == "정보") {
             var myLinear = LinearLayout(this)
             myLinear.orientation = LinearLayout.HORIZONTAL
             myLinear.layoutParams = params
@@ -180,52 +240,24 @@ class SecondActivity : AppCompatActivity() {
             extitle.setTypeface(typeFace)
 
             var excontent = TextView(this)
-            excontent.text = "${introduction}\n"
+            if (introduction != "null") {
+                excontent.text = "${introduction}\n"
+            } else {
+                excontent.text = "정보 없음\n"
+            }
             excontent.layoutParams = params
             excontent.setTextColor(Color.BLACK)
             excontent.setTypeface(typeFace)
 
-            extitle.textSize = 15f
-            excontent.textSize = 15f
+            extitle.textSize = 18f
+            excontent.textSize = 18f
 
             myextitle.addView(extitle)
             myexcontent.addView(excontent)
             myLinear.addView(myextitle)
             myLinear.addView(myexcontent)
             secondcontent.addView(myLinear)
-        }else{
-            var myLinear = LinearLayout(this)
-            myLinear.orientation = LinearLayout.HORIZONTAL
-            myLinear.layoutParams = params
-            var myextitle = LinearLayout(this)
-            myextitle.orientation = LinearLayout.VERTICAL
-            myextitle.layoutParams = params
-            var myexcontent = LinearLayout(this)
-            myexcontent.orientation = LinearLayout.VERTICAL
-            myexcontent.layoutParams = params
-
-            var extitle = TextView(this)
-            extitle.text = "정보)         \n"
-            extitle.layoutParams = params
-            extitle.setTextColor(Color.BLACK)
-            extitle.setTypeface(typeFace)
-
-            var excontent = TextView(this)
-            excontent.text = "정보 없음\n"
-            excontent.layoutParams = params
-            excontent.setTextColor(Color.BLACK)
-            excontent.setTypeface(typeFace)
-
-            extitle.textSize = 15f
-            excontent.textSize = 15f
-
-            myextitle.addView(extitle)
-            myexcontent.addView(excontent)
-            myLinear.addView(myextitle)
-            myLinear.addView(myexcontent)
-            secondcontent.addView(myLinear)
-        }
-        if(phoneno != "null"){
+        } else if (part == "전화번호") {
             var myLinear = LinearLayout(this)
             myLinear.orientation = LinearLayout.HORIZONTAL
             myLinear.layoutParams = params
@@ -243,44 +275,18 @@ class SecondActivity : AppCompatActivity() {
             extitle.setTypeface(typeFace)
 
             var excontent = TextView(this)
-            excontent.text = "${phoneno}\n"
+            if (phoneno != "null") {
+                excontent.text = "${phoneno}\n"
+            } else {
+                excontent.text = "정보 없음\n"
+            }
+
             excontent.layoutParams = params
             excontent.setTextColor(Color.BLACK)
             excontent.setTypeface(typeFace)
 
-            extitle.textSize = 15f
-            excontent.textSize = 15f
-
-            myextitle.addView(extitle)
-            myexcontent.addView(excontent)
-            myLinear.addView(myextitle)
-            myLinear.addView(myexcontent)
-            secondcontent.addView(myLinear)
-        }else{
-            var myLinear = LinearLayout(this)
-            myLinear.orientation = LinearLayout.HORIZONTAL
-            myLinear.layoutParams = params
-            var myextitle = LinearLayout(this)
-            myextitle.orientation = LinearLayout.VERTICAL
-            myextitle.layoutParams = params
-            var myexcontent = LinearLayout(this)
-            myexcontent.orientation = LinearLayout.VERTICAL
-            myexcontent.layoutParams = params
-
-            var extitle = TextView(this)
-            extitle.text = "전화번호)     \n"
-            extitle.layoutParams = params
-            extitle.setTextColor(Color.BLACK)
-            extitle.setTypeface(typeFace)
-
-            var excontent = TextView(this)
-            excontent.text = "정보 없음\n"
-            excontent.layoutParams = params
-            excontent.setTextColor(Color.BLACK)
-            excontent.setTypeface(typeFace)
-
-            extitle.textSize = 15f
-            excontent.textSize = 15f
+            extitle.textSize = 18f
+            excontent.textSize = 18f
 
             myextitle.addView(extitle)
             myexcontent.addView(excontent)
@@ -288,22 +294,7 @@ class SecondActivity : AppCompatActivity() {
             myLinear.addView(myexcontent)
             secondcontent.addView(myLinear)
         }
-
-
-
-        whiteback.setOnClickListener {
-            finish()
-        }
-        secondnotice.setOnClickListener {
-            var dialogView = View.inflate(this@SecondActivity, R.layout.dlgnotice, null)
-            var dlg = AlertDialog.Builder(this@SecondActivity)
-            dlg.setView(dialogView)
-            dlg.show()
-        }
-//        val mapView = MapView(this)
-//        secondcontent.addView(mapView)
     }
-
     //    fun getAppKeyHash() {
 //        try {
 //            val info =

@@ -236,6 +236,8 @@ class MainActivity : Activity() {
                 listButton.setTypeface(typeFace)
                 listButton.setTextColor(Color.BLACK)
                 listButton.setOnClickListener {
+                    val jRephoto = jObject.getJSONObject("repPhoto")
+                    val jPhotoid = jRephoto.getJSONObject("photoid")
                     var intent = Intent(applicationContext, SecondActivity::class.java)
                     intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
                     if(JSON_Parse(jObject, "address") != null){
@@ -257,6 +259,17 @@ class MainActivity : Activity() {
                         intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
                     }else{
                         intent.putExtra("phoneno", "null")
+                    }
+                    if(JSON_Parse(jPhotoid, "thumbnailpath") != null){
+                        intent.putExtra("thumbnailpath", "${JSON_Parse(jPhotoid, "thumbnailpath")}")
+                    }else{
+                        intent.putExtra("thumbnailpath", "null")
+                    }
+                    if(JSON_Parse(jObject, "latitude") != null){
+                        intent.putExtra("latitude", JSON_Parse(jObject, "latitude").toDouble())
+                        intent.putExtra("longitude", JSON_Parse(jObject, "longitude").toDouble())
+                    }else{
+                        intent.putExtra("address", "null")
                     }
                     startActivity(intent)
                 }
@@ -289,6 +302,8 @@ class MainActivity : Activity() {
                 listButton.setTypeface(typeFace)
                 listButton.setTextColor(Color.BLACK)
                 listButton.setOnClickListener {
+                    val jRephoto = jObject.getJSONObject("repPhoto")
+                    val jPhotoid = jRephoto.getJSONObject("photoid")
                     var intent = Intent(applicationContext, SecondActivity::class.java)
                     intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
                     if(JSON_Parse(jObject, "address") != null){
@@ -310,6 +325,11 @@ class MainActivity : Activity() {
                         intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
                     }else{
                         intent.putExtra("phoneno", "null")
+                    }
+                    if(JSON_Parse(jPhotoid, "thumbnailpath") != null){
+                        intent.putExtra("thumbnailpath", "${JSON_Parse(jPhotoid, "thumbnailpath")}")
+                    }else{
+                        intent.putExtra("thumbnailpath", "null")
                     }
                     startActivity(intent)
                 }
@@ -342,6 +362,8 @@ class MainActivity : Activity() {
                 listButton.setTypeface(typeFace)
                 listButton.setTextColor(Color.BLACK)
                 listButton.setOnClickListener {
+                    val jRephoto = jObject.getJSONObject("repPhoto")
+                    val jPhotoid = jRephoto.getJSONObject("photoid")
                     var intent = Intent(applicationContext, SecondActivity::class.java)
                     intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
                     if(JSON_Parse(jObject, "address") != null){
@@ -363,6 +385,11 @@ class MainActivity : Activity() {
                         intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
                     }else{
                         intent.putExtra("phoneno", "null")
+                    }
+                    if(JSON_Parse(jPhotoid, "thumbnailpath") != null){
+                        intent.putExtra("thumbnailpath", "${JSON_Parse(jPhotoid, "thumbnailpath")}")
+                    }else{
+                        intent.putExtra("thumbnailpath", "null")
                     }
                     startActivity(intent)
                 }
@@ -395,6 +422,8 @@ class MainActivity : Activity() {
                 listButton.setTypeface(typeFace)
                 listButton.setTextColor(Color.BLACK)
                 listButton.setOnClickListener {
+                    val jRephoto = jObject.getJSONObject("repPhoto")
+                    val jPhotoid = jRephoto.getJSONObject("photoid")
                     var intent = Intent(applicationContext, SecondActivity::class.java)
                     intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
                     if(JSON_Parse(jObject, "address") != null){
@@ -416,6 +445,11 @@ class MainActivity : Activity() {
                         intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
                     }else{
                         intent.putExtra("phoneno", "null")
+                    }
+                    if(JSON_Parse(jPhotoid, "thumbnailpath") != null){
+                        intent.putExtra("thumbnailpath", "${JSON_Parse(jPhotoid, "thumbnailpath")}")
+                    }else{
+                        intent.putExtra("thumbnailpath", "null")
                     }
                     startActivity(intent)
                 }
