@@ -34,7 +34,7 @@ struct MainScreen: View {
                         if(checkButtonList){
                             
                             Scroll(index: buttonIndex,mItem: value.getItemInfo())
-                                .frame(width: 230, height: 550)
+                                .frame(width: 220, height: 480)
                                 .padding(.top)
                             
                             
