@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct SubScreenInfo: View {
+    var value = Parsing()
     var mItem : [Item]      //JSON 정보
     var index : Int         //해당 정보의 인덱스
+    @State var position = MKCoordinateRegion(center:
+                                CLLocationCoordinate2D(
+                                    latitude:CLLocationDegrees( 37.331705),
+                                    longitude:CLLocationDegrees( -122.030737    )
+                                ),
+                            span: MKCoordinateSpan())
     
     var body: some View {
+        
         ScrollView {
             VStack{
                 ZStack{
@@ -20,13 +29,12 @@ struct SubScreenInfo: View {
                         .frame(width: 230, height: 70)
                         .padding(.trailing)
                     Text(mItem[index].title)
-                        .font(Font.custom("BinggraeSamanco-Bold",size:20))
+                        .font(Font.custom("OTMogujasusimgyeolB",size:20))
                         .lineLimit(1)
                 }//ZStack
                 
                 
                 VStack(alignment: .leading) {
-                    
                     HStack{
                         Text("주소)")
                             .font(Font.custom("BinggraeSamanco-Bold",size:16))
@@ -59,8 +67,12 @@ struct SubScreenInfo: View {
                         .data(url: URL(string: mItem[index].repPhoto?.photoid.imgpath ?? "")!)
                         .frame(width: 150, height: 150, alignment: .leading)
                     
-                    KakaoMap()
-                        .frame(width: 100  , height: 100)
+                    
+                    
+                    AppleMap()
+                        .frame(width: 200  , height: 150)
+//                    KakaoMap()
+//                        .frame(width: 100  , height: 100)
                     
                     
                 }

@@ -7,6 +7,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>BinggraeSamanco-Bold.ttf</string>
+		<string>mokwu.otf</string>
+		<string>MokWu.ttf</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
