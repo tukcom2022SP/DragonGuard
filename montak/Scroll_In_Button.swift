@@ -23,7 +23,7 @@ struct Scroll_In_Button: View {
                     .frame(width: 230, height: 70)
                     .padding(.leading)
                 Text("\(mItem[index].title)")
-                    .lineLimit(2)
+                    .lineLimit(1)
                     .font(Font.custom("BinggraeSamanco-Bold",size:20))
                     .foregroundColor(.black)
                 
