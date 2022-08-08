@@ -11,6 +11,14 @@ struct Scroll: View {
     var index : Int
     var mItem: [Item]
     
+//  폰트 목록 보는 코드
+//    func font(){
+//        for fontFamily in UIFont.familyNames {
+//            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
+//                print("font : " + fontName)
+//            }
+//        }
+//    }
     
     var body: some View {
         VStack{
@@ -20,10 +28,10 @@ struct Scroll: View {
                     .frame(width: 230, height: 70)
                     .padding(.leading)
                 
-                if(index == 0 ){Text("[먹거리]").font(Font.custom("BinggraeSamanco-Bold",size:30))}
-                else if( index == 1){Text("[놀멍]").font(Font.custom("BinggraeSamanco-Bold", size: 30))}
-                else if( index == 2){Text("[볼거리]").font(Font.custom("BinggraeSamanco-Bold", size: 30))}
-                else if( index == 3){Text("[쉴멍]").font(Font.custom("BinggraeSamanco-Bold", size: 30))}
+                if(index == 0 ){Text("[먹거리]").font(Font.custom("OTMogujasusimgyeolB",size:30))}
+                else if( index == 1){Text("[놀멍]").font(Font.custom("OTMogujasusimgyeolB", size: 30))}
+                else if( index == 2){Text("[볼거리]").font(Font.custom("OTMogujasusimgyeolB", size: 30))}
+                else if( index == 3){Text("[쉴멍]").font(Font.custom("OTMogujasusimgyeolB", size: 30))}
                 
             }
             ScrollView{
