@@ -9,7 +9,6 @@ import SwiftUI
 import MapKit
 
 struct SubScreenInfo: View {
-    var value = Parsing()
     var mItem : [Item]      //JSON 정보
     var index : Int         //해당 정보의 인덱스
     @State var check : Bool = true
@@ -79,14 +78,14 @@ struct SubScreenInfo: View {
                     KakaoMap(la: la,long: long)
                         .frame(width: 200  , height: 150)
                         .opacity(check ? 0: 1)
-                            
-                        
+                    
+                    
                     
                 }
             }//VStack
         }
     }
-    
+    // latitude, longitude가 0과 nil인지 구분
     func checkLaLong() {
         if(mItem[index].latitude == 0 && mItem[index].longitude == 0){
             guard mItem[index].latitude == 0 else{ return self.check = false}
