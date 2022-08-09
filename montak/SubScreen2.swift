@@ -35,7 +35,10 @@ struct SubScreen2: View {
                     }
                     .frame(width: 340, height: 610)
                     
+<<<<<<< HEAD
                         
+=======
+>>>>>>> main
                     VStack{
                         Image("JejuTour")
                             .resizable()
