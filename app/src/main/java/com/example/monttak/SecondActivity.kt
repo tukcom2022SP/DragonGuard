@@ -26,19 +26,20 @@ import java.net.URL
 
 
 class SecondActivity : AppCompatActivity() {
+    lateinit var mapView: MapView
+    lateinit var titleBar : String
     lateinit var address: String
     lateinit var roadaddress: String
     lateinit var introduction: String
     lateinit var phoneno: String
     lateinit var thumbnail: String
-    lateinit var bit: Bitmap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second2)
 //        getAppKeyHash()
 
         var intent = intent
-        val titleBar = intent.getStringExtra("title")
+        titleBar = intent.getStringExtra("title")!!
         address = intent.getStringExtra("address")!!
         roadaddress = intent.getStringExtra("roadaddress")!!
         introduction = intent.getStringExtra("introduction")!!
@@ -46,9 +47,6 @@ class SecondActivity : AppCompatActivity() {
         thumbnail = intent.getStringExtra("thumbnailpath")!!
         var latitude = intent.getDoubleExtra("latitude",0.0)
         var longitude = intent.getDoubleExtra("longitude",0.0)
-
-
-
 
         secondcontent.removeAllViews()
 
@@ -70,6 +68,7 @@ class SecondActivity : AppCompatActivity() {
         mapView(longitude,latitude)
 
         whiteback.setOnClickListener {
+            secondcontent.removeAllViews()
             finish()
         }
         secondnotice.setOnClickListener {
@@ -90,29 +89,26 @@ class SecondActivity : AppCompatActivity() {
         myLinear.orientation = LinearLayout.VERTICAL
         myLinear.layoutParams = params
 
-        val mapView = MapView(this@SecondActivity)
-        mapView.layoutParams = params
         if(latitude != 0.0){
-            mapView.setMapCenterPoint(MapPoint.mapPointWithCONGCoord(latitude,longitude),true)
-            mapView.setZoomLevel(7, true)
-            mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(33.41, 126.52), 9, true)
-            mapView.zoomIn(true)
+            mapView = MapView(this@SecondActivity)
+            mapView.layoutParams = params
+            val mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
+            mapView.setMapCenterPoint(mapPoint, true)
+            mapView.setZoomLevel(1,true)
+
+            val marker = MapPOIItem()
+            marker.itemName = titleBar
+            marker.mapPoint = mapPoint
+            marker.markerType = MapPOIItem.MarkerType.RedPin
+            marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
+            mapView.addPOIItem(marker)
+
+            myLinear.addView(mapView)
+            secondcontent.addView(myLinear)
+            Log.d(TAG, "Log ----- Map")
         }else{
             return
         }
-        val marker = MapPOIItem()
-        marker.itemName = "Default Marker"
-        marker.tag = 0
-        marker.mapPoint = mapView.mapCenterPoint
-        marker.markerType = MapPOIItem.MarkerType.RedPin // 기본으로 제공하는 BluePin 마커 모양.
-
-        marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
-        mapView.addPOIItem(marker)
-
-        myLinear.addView(mapView)
-        secondcontent.addView(myLinear)
-        Log.d(TAG, "Log ----- Map")
-
     }
 
 

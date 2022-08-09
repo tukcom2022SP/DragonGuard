@@ -26,7 +26,6 @@ import java.net.URL
 
 class MainActivity : Activity() {
     lateinit var item: JSONArray
-
     private lateinit var cm2: ConnectivityManager
 
     private val networkCallBack = object : ConnectivityManager.NetworkCallback() {
@@ -268,8 +267,6 @@ class MainActivity : Activity() {
                     if(JSON_Parse(jObject, "latitude") != null){
                         intent.putExtra("latitude", JSON_Parse(jObject, "latitude").toDouble())
                         intent.putExtra("longitude", JSON_Parse(jObject, "longitude").toDouble())
-                    }else{
-                        intent.putExtra("address", "null")
                     }
                     startActivity(intent)
                 }
@@ -331,6 +328,12 @@ class MainActivity : Activity() {
                     }else{
                         intent.putExtra("thumbnailpath", "null")
                     }
+                    if(JSON_Parse(jObject, "latitude") != null){
+                        val latitude = JSON_Parse(jObject, "latitude").toDouble()
+                        val longitude = JSON_Parse(jObject, "longitude").toDouble()
+                        intent.putExtra("latitude", latitude)
+                        intent.putExtra("longitude", longitude)
+                    }
                     startActivity(intent)
                 }
                 content.addView(listButton)
@@ -391,6 +394,10 @@ class MainActivity : Activity() {
                     }else{
                         intent.putExtra("thumbnailpath", "null")
                     }
+                    if(JSON_Parse(jObject, "latitude") != null){
+                        intent.putExtra("latitude", JSON_Parse(jObject, "latitude").toDouble())
+                        intent.putExtra("longitude", JSON_Parse(jObject, "longitude").toDouble())
+                    }
                     startActivity(intent)
                 }
                 content.addView(listButton)
@@ -450,6 +457,10 @@ class MainActivity : Activity() {
                         intent.putExtra("thumbnailpath", "${JSON_Parse(jPhotoid, "thumbnailpath")}")
                     }else{
                         intent.putExtra("thumbnailpath", "null")
+                    }
+                    if(JSON_Parse(jObject, "latitude") != null){
+                        intent.putExtra("latitude", JSON_Parse(jObject, "latitude").toDouble())
+                        intent.putExtra("longitude", JSON_Parse(jObject, "longitude").toDouble())
                     }
                     startActivity(intent)
                 }
