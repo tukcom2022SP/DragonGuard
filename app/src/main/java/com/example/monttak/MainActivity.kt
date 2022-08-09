@@ -264,7 +264,7 @@ class MainActivity : Activity() {
                     }else{
                         intent.putExtra("thumbnailpath", "null")
                     }
-                    if(JSON_Parse(jObject, "latitude") != null){
+                    if(JSON_Parse(jObject, "latitude") != "null" && JSON_Parse(jObject, "latitude") != null){
                         intent.putExtra("latitude", JSON_Parse(jObject, "latitude").toDouble())
                         intent.putExtra("longitude", JSON_Parse(jObject, "longitude").toDouble())
                     }
@@ -328,7 +328,7 @@ class MainActivity : Activity() {
                     }else{
                         intent.putExtra("thumbnailpath", "null")
                     }
-                    if(JSON_Parse(jObject, "latitude") != null){
+                    if(JSON_Parse(jObject, "latitude") != "null" && JSON_Parse(jObject, "latitude") != null){
                         val latitude = JSON_Parse(jObject, "latitude").toDouble()
                         val longitude = JSON_Parse(jObject, "longitude").toDouble()
                         intent.putExtra("latitude", latitude)
@@ -394,7 +394,7 @@ class MainActivity : Activity() {
                     }else{
                         intent.putExtra("thumbnailpath", "null")
                     }
-                    if(JSON_Parse(jObject, "latitude") != null){
+                    if(JSON_Parse(jObject, "latitude") != "null" && JSON_Parse(jObject, "latitude") != null){
                         intent.putExtra("latitude", JSON_Parse(jObject, "latitude").toDouble())
                         intent.putExtra("longitude", JSON_Parse(jObject, "longitude").toDouble())
                     }
@@ -458,7 +458,7 @@ class MainActivity : Activity() {
                     }else{
                         intent.putExtra("thumbnailpath", "null")
                     }
-                    if(JSON_Parse(jObject, "latitude") != null){
+                    if(JSON_Parse(jObject, "latitude") != "null" && JSON_Parse(jObject, "latitude") != null){
                         intent.putExtra("latitude", JSON_Parse(jObject, "latitude").toDouble())
                         intent.putExtra("longitude", JSON_Parse(jObject, "longitude").toDouble())
                     }
