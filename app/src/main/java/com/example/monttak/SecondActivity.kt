@@ -3,17 +3,17 @@ package com.example.monttak
 
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.monttak.databinding.ActivitySecond2Binding
 import kotlinx.android.synthetic.main.activity_second2.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,16 +26,19 @@ import java.net.URL
 
 
 class SecondActivity : AppCompatActivity() {
-    lateinit var mapView: MapView
-    lateinit var titleBar : String
+    private lateinit var binding: ActivitySecond2Binding
+    lateinit var titleBar: String
     lateinit var address: String
     lateinit var roadaddress: String
     lateinit var introduction: String
     lateinit var phoneno: String
     lateinit var thumbnail: String
+    lateinit var mapView: MapView
+
+    var latitude = 0.0
+    var longitude = 0.0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second2)
 //        getAppKeyHash()
 
         var intent = intent
@@ -45,16 +48,45 @@ class SecondActivity : AppCompatActivity() {
         introduction = intent.getStringExtra("introduction")!!
         phoneno = intent.getStringExtra("phoneno")!!
         thumbnail = intent.getStringExtra("thumbnailpath")!!
-        var latitude = intent.getDoubleExtra("latitude",0.0)
-        var longitude = intent.getDoubleExtra("longitude",0.0)
+        latitude = intent.getDoubleExtra("latitude", 0.0)
+        longitude = intent.getDoubleExtra("longitude", 0.0)
 
-        secondcontent.removeAllViews()
+//        secondcontent.removeAllViews()
+        binding = ActivitySecond2Binding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        val params = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT,ConstraintLayout.LayoutParams.MATCH_PARENT)
+        if (latitude != 0.0){
+            mapView = MapView(this)
+            binding.clKakaoMapView.addView(mapView)
+            mapView.layoutParams = params
+            val mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
+            mapView.setMapCenterPoint(mapPoint, true)
+            mapView.setZoomLevel(1, true)
+            mapView.layoutParams = params
+            val marker = MapPOIItem()
+            marker.itemName = titleBar
+            marker.mapPoint = mapPoint
+            marker.markerType = MapPOIItem.MarkerType.RedPin
+            marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
+            mapView.addPOIItem(marker)
+        }
 
         secondbar.text = titleBar
         arrangeView("주소")
         arrangeView("도로명주소")
         arrangeView("정보")
         arrangeView("전화번호")
+
+//        val params = LinearLayout.LayoutParams(
+//            LinearLayout.LayoutParams.WRAP_CONTENT,
+//            LinearLayout.LayoutParams.WRAP_CONTENT
+//        )
+//        var myLinear = LinearLayout(this@SecondActivity)
+//        myLinear.orientation = LinearLayout.VERTICAL
+//        myLinear.layoutParams = params
+//        myLinear.setBackgroundResource(R.drawable.textbar)
+
 
         val corutin = CoroutineScope(Dispatchers.Main)
         corutin.launch {
@@ -63,9 +95,14 @@ class SecondActivity : AppCompatActivity() {
             }
             val originalBitmap = originalDeferred.await()
             loadImage(originalBitmap)
-        }
 
-        mapView(longitude,latitude)
+        }
+//        var mThread = mapViewSetting()
+//        mThread.start()
+//        mThread.join()
+//        val handler = Handler()
+//        handler.postDelayed({ }, 500)
+
 
         whiteback.setOnClickListener {
             secondcontent.removeAllViews()
@@ -77,38 +114,43 @@ class SecondActivity : AppCompatActivity() {
             dlg.setView(dialogView)
             dlg.show()
         }
+        secondunder.setOnClickListener {
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://ijto.or.kr/korean/"))
+            startActivity(intent)
+        }
     }
 
-    fun mapView(longitude:Double, latitude:Double){
+    inner class mapViewSetting : Thread() {
+        override fun run() {
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
 
-        val params = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        )
-        var myLinear = LinearLayout(this@SecondActivity)
-        myLinear.orientation = LinearLayout.VERTICAL
-        myLinear.layoutParams = params
+            if (latitude != 0.0) {
+                mapView = MapView(this@SecondActivity)
+                mapView.layoutParams = params
+                val mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
+                mapView.setMapCenterPoint(mapPoint, true)
+                mapView.setZoomLevel(1, true)
 
-        if(latitude != 0.0){
-            mapView = MapView(this@SecondActivity)
-            mapView.layoutParams = params
-            val mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
-            mapView.setMapCenterPoint(mapPoint, true)
-            mapView.setZoomLevel(1,true)
+                val marker = MapPOIItem()
+                marker.itemName = titleBar
+                marker.mapPoint = mapPoint
+                marker.markerType = MapPOIItem.MarkerType.RedPin
+                marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
+                mapView.addPOIItem(marker)
 
-            val marker = MapPOIItem()
-            marker.itemName = titleBar
-            marker.mapPoint = mapPoint
-            marker.markerType = MapPOIItem.MarkerType.RedPin
-            marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
-            mapView.addPOIItem(marker)
+                Log.d(TAG, "Log ----- Map")
+            } else {
+                return
+            }
+            runOnUiThread{
+                maplayout.addView(mapView)
 
-            myLinear.addView(mapView)
-            secondcontent.addView(myLinear)
-            Log.d(TAG, "Log ----- Map")
-        }else{
-            return
+            }
         }
+
     }
 
 
@@ -118,180 +160,43 @@ class SecondActivity : AppCompatActivity() {
         }
 
     private fun loadImage(bmp: Bitmap) {
-        val params = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        )
-        var myLinear = LinearLayout(this@SecondActivity)
-        myLinear.orientation = LinearLayout.VERTICAL
-        myLinear.layoutParams = params
 
-        var myImg = LinearLayout(this@SecondActivity)
-        myImg.orientation = LinearLayout.VERTICAL
-        myImg.layoutParams = params
-
-        var imageView = ImageView(this@SecondActivity)
-        imageView.layoutParams = params
-        imageView.setImageBitmap(bmp)
-        imageView.visibility = View.VISIBLE
-
-        myImg.addView(imageView)
-        myLinear.addView(myImg)
-        secondcontent.addView(myLinear)
+        imageview.setImageBitmap(bmp)
+        imageview.visibility = View.VISIBLE
         Log.d(TAG, "Log ----- Image")
     }
 
     fun arrangeView(part: String) {
-        val params = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        )
-        val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
         if (part == "주소") {
-            var myLinear = LinearLayout(this)
-            myLinear.orientation = LinearLayout.HORIZONTAL
-            myLinear.layoutParams = params
-            var myextitle = LinearLayout(this)
-            myextitle.orientation = LinearLayout.VERTICAL
-            myextitle.layoutParams = params
-            var myexcontent = LinearLayout(this)
-            myexcontent.orientation = LinearLayout.VERTICAL
-            myexcontent.layoutParams = params
-
-            var extitle = TextView(this)
-            extitle.text = "주소)          \n"
-            extitle.layoutParams = params
-            extitle.setTextColor(Color.BLACK)
-            extitle.setTypeface(typeFace)
-
-            var excontent = TextView(this)
             if (address != "null") {
-                excontent.text = "${address}\n"
+                addcontent.text = "${address}\n"
             } else {
-                excontent.text = "정보 없음\n"
+                addcontent.text = "정보 없음\n"
             }
-            excontent.layoutParams = params
-            excontent.setTextColor(Color.BLACK)
-            excontent.setTypeface(typeFace)
 
-            extitle.textSize = 18f
-            excontent.textSize = 18f
-
-            myextitle.addView(extitle)
-            myexcontent.addView(excontent)
-            myLinear.addView(myextitle)
-            myLinear.addView(myexcontent)
-            secondcontent.addView(myLinear)
         } else if (part == "도로명주소") {
-            var myLinear = LinearLayout(this)
-            myLinear.orientation = LinearLayout.HORIZONTAL
-            myLinear.layoutParams = params
-            var myextitle = LinearLayout(this)
-            myextitle.orientation = LinearLayout.VERTICAL
-            myextitle.layoutParams = params
-            var myexcontent = LinearLayout(this)
-            myexcontent.orientation = LinearLayout.VERTICAL
-            myexcontent.layoutParams = params
-
-            var extitle = TextView(this)
-            extitle.text = "도로명주소)   \n"
-            extitle.layoutParams = params
-            extitle.setTextColor(Color.BLACK)
-            extitle.setTypeface(typeFace)
-
-            var excontent = TextView(this)
             if (roadaddress != "null") {
-                excontent.text = "${roadaddress}\n"
+                roadaddcontent.text = "${roadaddress}\n"
             } else {
-                excontent.text = "정보 없음\n"
+                roadaddcontent.text = "정보 없음\n"
             }
-
-            excontent.layoutParams = params
-            excontent.setTextColor(Color.BLACK)
-            excontent.setTypeface(typeFace)
-
-            extitle.textSize = 18f
-            excontent.textSize = 18f
-
-            myextitle.addView(extitle)
-            myexcontent.addView(excontent)
-            myLinear.addView(myextitle)
-            myLinear.addView(myexcontent)
-            secondcontent.addView(myLinear)
         } else if (part == "정보") {
-            var myLinear = LinearLayout(this)
-            myLinear.orientation = LinearLayout.HORIZONTAL
-            myLinear.layoutParams = params
-            var myextitle = LinearLayout(this)
-            myextitle.orientation = LinearLayout.VERTICAL
-            myextitle.layoutParams = params
-            var myexcontent = LinearLayout(this)
-            myexcontent.orientation = LinearLayout.VERTICAL
-            myexcontent.layoutParams = params
 
-            var extitle = TextView(this)
-            extitle.text = "정보)          \n"
-            extitle.layoutParams = params
-            extitle.setTextColor(Color.BLACK)
-            extitle.setTypeface(typeFace)
-
-            var excontent = TextView(this)
             if (introduction != "null") {
-                excontent.text = "${introduction}\n"
+                infocontent.text = "${introduction}\n"
             } else {
-                excontent.text = "정보 없음\n"
+                infocontent.text = "정보 없음\n"
             }
-            excontent.layoutParams = params
-            excontent.setTextColor(Color.BLACK)
-            excontent.setTypeface(typeFace)
-
-            extitle.textSize = 18f
-            excontent.textSize = 18f
-
-            myextitle.addView(extitle)
-            myexcontent.addView(excontent)
-            myLinear.addView(myextitle)
-            myLinear.addView(myexcontent)
-            secondcontent.addView(myLinear)
         } else if (part == "전화번호") {
-            var myLinear = LinearLayout(this)
-            myLinear.orientation = LinearLayout.HORIZONTAL
-            myLinear.layoutParams = params
-            var myextitle = LinearLayout(this)
-            myextitle.orientation = LinearLayout.VERTICAL
-            myextitle.layoutParams = params
-            var myexcontent = LinearLayout(this)
-            myexcontent.orientation = LinearLayout.VERTICAL
-            myexcontent.layoutParams = params
 
-            var extitle = TextView(this)
-            extitle.text = "전화번호)     \n"
-            extitle.layoutParams = params
-            extitle.setTextColor(Color.BLACK)
-            extitle.setTypeface(typeFace)
-
-            var excontent = TextView(this)
             if (phoneno != "null") {
-                excontent.text = "${phoneno}\n"
+                phonecontent.text = "${phoneno}\n"
             } else {
-                excontent.text = "정보 없음\n"
+                phonecontent.text = "정보 없음\n"
             }
-
-            excontent.layoutParams = params
-            excontent.setTextColor(Color.BLACK)
-            excontent.setTypeface(typeFace)
-
-            extitle.textSize = 18f
-            excontent.textSize = 18f
-
-            myextitle.addView(extitle)
-            myexcontent.addView(excontent)
-            myLinear.addView(myextitle)
-            myLinear.addView(myexcontent)
-            secondcontent.addView(myLinear)
         }
     }
-    //    fun getAppKeyHash() {
+//    fun getAppKeyHash() {
 //        try {
 //            val info =
 //                packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES)
