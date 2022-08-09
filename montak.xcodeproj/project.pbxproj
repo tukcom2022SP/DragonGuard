@@ -11,6 +11,7 @@
 		3B19207F289E7ECF00ABF7DA /* KakaoMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B19207E289E7ECF00ABF7DA /* KakaoMap.swift */; };
 		3B192087289E82E600ABF7DA /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B192086289E82E600ABF7DA /* Metal.framework */; };
 		3B2919CE289CE0B700963811 /* SubScreenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2919CD289CE0B700963811 /* SubScreenInfo.swift */; };
+		3B2EAFC428A1F46100E1BC29 /* JejuWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EAFC328A1F46100E1BC29 /* JejuWebView.swift */; };
 		3B30C68E2898E108001ADE41 /* Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30C68D2898E108001ADE41 /* Scroll.swift */; };
 		3B30C6902898E1BF001ADE41 /* FirstNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30C68F2898E1BF001ADE41 /* FirstNotice.swift */; };
 		3B30C6922898E232001ADE41 /* Enroll&Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B30C6912898E232001ADE41 /* Enroll&Notice.swift */; };
@@ -313,6 +314,7 @@
 		3B19207E289E7ECF00ABF7DA /* KakaoMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMap.swift; sourceTree = "<group>"; };
 		3B192086289E82E600ABF7DA /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		3B2919CD289CE0B700963811 /* SubScreenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubScreenInfo.swift; sourceTree = "<group>"; };
+		3B2EAFC328A1F46100E1BC29 /* JejuWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JejuWebView.swift; sourceTree = "<group>"; };
 		3B30C68D2898E108001ADE41 /* Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scroll.swift; sourceTree = "<group>"; };
 		3B30C68F2898E1BF001ADE41 /* FirstNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstNotice.swift; sourceTree = "<group>"; };
 		3B30C6912898E232001ADE41 /* Enroll&Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enroll&Notice.swift"; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 				3B30C68F2898E1BF001ADE41 /* FirstNotice.swift */,
 				3B30C68D2898E108001ADE41 /* Scroll.swift */,
 				3B3732D12897964900C40D3E /* SubScreen2.swift */,
+				3B2EAFC328A1F46100E1BC29 /* JejuWebView.swift */,
 				3B2919CD289CE0B700963811 /* SubScreenInfo.swift */,
 				3B3732C9289778E600C40D3E /* JSON.swift */,
 				3B3732CD28977A1000C40D3E /* ParsingJSON.swift */,
@@ -1495,6 +1498,7 @@
 				3B30C6922898E232001ADE41 /* Enroll&Notice.swift in Sources */,
 				3B3732D22897964900C40D3E /* SubScreen2.swift in Sources */,
 				3B4E465428991EFA00222915 /* Scroll_In_Button.swift in Sources */,
+				3B2EAFC428A1F46100E1BC29 /* JejuWebView.swift in Sources */,
 				3B19207F289E7ECF00ABF7DA /* KakaoMap.swift in Sources */,
 				3B3732BC2897773800C40D3E /* MainScreen.swift in Sources */,
 				3B3732BA2897773800C40D3E /* montakApp.swift in Sources */,
