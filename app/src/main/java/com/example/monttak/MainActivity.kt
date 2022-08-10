@@ -205,7 +205,56 @@ class MainActivity : Activity() {
             item = JsonArray()
         }
     }
-
+    fun makeButton(jObject : JSONObject){
+        val listButton = Button(this@MainActivity)
+        listButton.setText("${JSON_Parse(jObject, "title")}")
+        listButton.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        listButton.setBackgroundResource(R.drawable.textbar)
+        listButton.textSize = 20f
+        val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
+        listButton.setTypeface(typeFace)
+        listButton.setTextColor(Color.BLACK)
+        listButton.setOnClickListener {
+            val jRephoto = jObject.getJSONObject("repPhoto")
+            val jPhotoid = jRephoto.getJSONObject("photoid")
+            var intent = Intent(applicationContext, SecondActivity::class.java)
+            intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
+            if(JSON_Parse(jObject, "address") != null){
+                intent.putExtra("address", "${JSON_Parse(jObject, "address")}")
+            }else{
+                intent.putExtra("address", "null")
+            }
+            if(JSON_Parse(jObject, "roadaddress") != null){
+                intent.putExtra("roadaddress", "${JSON_Parse(jObject, "roadaddress")}")
+            }else{
+                intent.putExtra("roadaddress", "null")
+            }
+            if(JSON_Parse(jObject, "introduction") != null){
+                intent.putExtra("introduction", "${JSON_Parse(jObject, "introduction")}")
+            }else{
+                intent.putExtra("introduction", "null")
+            }
+            if(JSON_Parse(jObject, "phoneno") != null){
+                intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
+            }else{
+                intent.putExtra("phoneno", "null")
+            }
+            if(JSON_Parse(jPhotoid, "thumbnailpath") != null){
+                intent.putExtra("thumbnailpath", "${JSON_Parse(jPhotoid, "thumbnailpath")}")
+            }else{
+                intent.putExtra("thumbnailpath", "null")
+            }
+            if(JSON_Parse(jObject, "latitude") != "null" && JSON_Parse(jObject, "latitude") != null){
+                intent.putExtra("latitude", JSON_Parse(jObject, "latitude").toDouble())
+                intent.putExtra("longitude", JSON_Parse(jObject, "longitude").toDouble())
+            }
+            startActivity(intent)
+        }
+        content.addView(listButton)
+    }
     //먹거리 나열
     fun MukFun() {
         if (item == null) {
@@ -223,54 +272,7 @@ class MainActivity : Activity() {
             val jLabel = JSON_Parse(jContentscd, "label")
             if (jLabel == "음식점") {
                 textbar1.setText("[먹거리]")
-                val listButton = Button(this@MainActivity)
-                listButton.setText("${JSON_Parse(jObject, "title")}")
-                listButton.layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                )
-                listButton.setBackgroundResource(R.drawable.textbar)
-                listButton.textSize = 20f
-                val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
-                listButton.setTypeface(typeFace)
-                listButton.setTextColor(Color.BLACK)
-                listButton.setOnClickListener {
-                    val jRephoto = jObject.getJSONObject("repPhoto")
-                    val jPhotoid = jRephoto.getJSONObject("photoid")
-                    var intent = Intent(applicationContext, SecondActivity::class.java)
-                    intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
-                    if(JSON_Parse(jObject, "address") != null){
-                        intent.putExtra("address", "${JSON_Parse(jObject, "address")}")
-                    }else{
-                        intent.putExtra("address", "null")
-                    }
-                    if(JSON_Parse(jObject, "roadaddress") != null){
-                        intent.putExtra("roadaddress", "${JSON_Parse(jObject, "roadaddress")}")
-                    }else{
-                        intent.putExtra("roadaddress", "null")
-                    }
-                    if(JSON_Parse(jObject, "introduction") != null){
-                        intent.putExtra("introduction", "${JSON_Parse(jObject, "introduction")}")
-                    }else{
-                        intent.putExtra("introduction", "null")
-                    }
-                    if(JSON_Parse(jObject, "phoneno") != null){
-                        intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
-                    }else{
-                        intent.putExtra("phoneno", "null")
-                    }
-                    if(JSON_Parse(jPhotoid, "thumbnailpath") != null){
-                        intent.putExtra("thumbnailpath", "${JSON_Parse(jPhotoid, "thumbnailpath")}")
-                    }else{
-                        intent.putExtra("thumbnailpath", "null")
-                    }
-                    if(JSON_Parse(jObject, "latitude") != "null" && JSON_Parse(jObject, "latitude") != null){
-                        intent.putExtra("latitude", JSON_Parse(jObject, "latitude").toDouble())
-                        intent.putExtra("longitude", JSON_Parse(jObject, "longitude").toDouble())
-                    }
-                    startActivity(intent)
-                }
-                content.addView(listButton)
+                makeButton(jObject)
             }
         }
     }
@@ -287,56 +289,7 @@ class MainActivity : Activity() {
             val jLabel = JSON_Parse(jContentscd, "label")
             if (jLabel == "테마여행" || jLabel == "쇼핑") {
                 textbar1.setText("[놀멍]")
-                val listButton = Button(this@MainActivity)
-                listButton.setText("${JSON_Parse(jObject, "title")}")
-                listButton.layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                )
-                listButton.setBackgroundResource(R.drawable.textbar)
-                listButton.textSize = 20f
-                val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
-                listButton.setTypeface(typeFace)
-                listButton.setTextColor(Color.BLACK)
-                listButton.setOnClickListener {
-                    val jRephoto = jObject.getJSONObject("repPhoto")
-                    val jPhotoid = jRephoto.getJSONObject("photoid")
-                    var intent = Intent(applicationContext, SecondActivity::class.java)
-                    intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
-                    if(JSON_Parse(jObject, "address") != null){
-                        intent.putExtra("address", "${JSON_Parse(jObject, "address")}")
-                    }else{
-                        intent.putExtra("address", "null")
-                    }
-                    if(JSON_Parse(jObject, "roadaddress") != null){
-                        intent.putExtra("roadaddress", "${JSON_Parse(jObject, "roadaddress")}")
-                    }else{
-                        intent.putExtra("roadaddress", "null")
-                    }
-                    if(JSON_Parse(jObject, "introduction") != null){
-                        intent.putExtra("introduction", "${JSON_Parse(jObject, "introduction")}")
-                    }else{
-                        intent.putExtra("introduction", "null")
-                    }
-                    if(JSON_Parse(jObject, "phoneno") != null){
-                        intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
-                    }else{
-                        intent.putExtra("phoneno", "null")
-                    }
-                    if(JSON_Parse(jPhotoid, "thumbnailpath") != null){
-                        intent.putExtra("thumbnailpath", "${JSON_Parse(jPhotoid, "thumbnailpath")}")
-                    }else{
-                        intent.putExtra("thumbnailpath", "null")
-                    }
-                    if( JSON_Parse(jObject, "latitude") != "null" && JSON_Parse(jObject, "latitude") != null){
-                        val latitude = JSON_Parse(jObject, "latitude").toDouble()
-                        val longitude = JSON_Parse(jObject, "longitude").toDouble()
-                        intent.putExtra("latitude", latitude)
-                        intent.putExtra("longitude", longitude)
-                    }
-                    startActivity(intent)
-                }
-                content.addView(listButton)
+                makeButton(jObject)
             }
         }
     }
@@ -353,54 +306,7 @@ class MainActivity : Activity() {
             val jLabel = JSON_Parse(jContentscd, "label")
             if (jLabel == "정보" || jLabel == "축제/행사") {
                 textbar1.setText("[볼거리]")
-                val listButton = Button(this@MainActivity)
-                listButton.setText("${JSON_Parse(jObject, "title")}")
-                listButton.layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                )
-                listButton.setBackgroundResource(R.drawable.textbar)
-                listButton.textSize = 20f
-                val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
-                listButton.setTypeface(typeFace)
-                listButton.setTextColor(Color.BLACK)
-                listButton.setOnClickListener {
-                    val jRephoto = jObject.getJSONObject("repPhoto")
-                    val jPhotoid = jRephoto.getJSONObject("photoid")
-                    var intent = Intent(applicationContext, SecondActivity::class.java)
-                    intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
-                    if(JSON_Parse(jObject, "address") != null){
-                        intent.putExtra("address", "${JSON_Parse(jObject, "address")}")
-                    }else{
-                        intent.putExtra("address", "null")
-                    }
-                    if(JSON_Parse(jObject, "roadaddress") != null){
-                        intent.putExtra("roadaddress", "${JSON_Parse(jObject, "roadaddress")}")
-                    }else{
-                        intent.putExtra("roadaddress", "null")
-                    }
-                    if(JSON_Parse(jObject, "introduction") != null){
-                        intent.putExtra("introduction", "${JSON_Parse(jObject, "introduction")}")
-                    }else{
-                        intent.putExtra("introduction", "null")
-                    }
-                    if(JSON_Parse(jObject, "phoneno") != null){
-                        intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
-                    }else{
-                        intent.putExtra("phoneno", "null")
-                    }
-                    if(JSON_Parse(jPhotoid, "thumbnailpath") != null){
-                        intent.putExtra("thumbnailpath", "${JSON_Parse(jPhotoid, "thumbnailpath")}")
-                    }else{
-                        intent.putExtra("thumbnailpath", "null")
-                    }
-                    if(JSON_Parse(jObject, "latitude") != "null"  && JSON_Parse(jObject, "latitude") != null){
-                        intent.putExtra("latitude", JSON_Parse(jObject, "latitude").toDouble())
-                        intent.putExtra("longitude", JSON_Parse(jObject, "longitude").toDouble())
-                    }
-                    startActivity(intent)
-                }
-                content.addView(listButton)
+                makeButton(jObject)
             }
         }
     }
@@ -417,54 +323,7 @@ class MainActivity : Activity() {
             val jLabel = JSON_Parse(jContentscd, "label")
             if (jLabel == "숙박") {
                 textbar1.setText("[쉴멍]")
-                val listButton = Button(this@MainActivity)
-                listButton.setText("${JSON_Parse(jObject, "title")}")
-                listButton.layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                )
-                listButton.setBackgroundResource(R.drawable.textbar)
-                listButton.textSize = 20f
-                val typeFace = Typeface.createFromAsset(assets, "binggraesamancobold.ttf")
-                listButton.setTypeface(typeFace)
-                listButton.setTextColor(Color.BLACK)
-                listButton.setOnClickListener {
-                    val jRephoto = jObject.getJSONObject("repPhoto")
-                    val jPhotoid = jRephoto.getJSONObject("photoid")
-                    var intent = Intent(applicationContext, SecondActivity::class.java)
-                    intent.putExtra("title", "${JSON_Parse(jObject, "title")}")
-                    if(JSON_Parse(jObject, "address") != null){
-                        intent.putExtra("address", "${JSON_Parse(jObject, "address")}")
-                    }else{
-                        intent.putExtra("address", "null")
-                    }
-                    if(JSON_Parse(jObject, "roadaddress") != null){
-                        intent.putExtra("roadaddress", "${JSON_Parse(jObject, "roadaddress")}")
-                    }else{
-                        intent.putExtra("roadaddress", "null")
-                    }
-                    if(JSON_Parse(jObject, "introduction") != null){
-                        intent.putExtra("introduction", "${JSON_Parse(jObject, "introduction")}")
-                    }else{
-                        intent.putExtra("introduction", "null")
-                    }
-                    if(JSON_Parse(jObject, "phoneno") != null){
-                        intent.putExtra("phoneno", "${JSON_Parse(jObject, "phoneno")}")
-                    }else{
-                        intent.putExtra("phoneno", "null")
-                    }
-                    if(JSON_Parse(jPhotoid, "thumbnailpath") != null){
-                        intent.putExtra("thumbnailpath", "${JSON_Parse(jPhotoid, "thumbnailpath")}")
-                    }else{
-                        intent.putExtra("thumbnailpath", "null")
-                    }
-                    if(JSON_Parse(jObject, "latitude") != "null" && JSON_Parse(jObject, "latitude") != null){
-                        intent.putExtra("latitude", JSON_Parse(jObject, "latitude").toDouble())
-                        intent.putExtra("longitude", JSON_Parse(jObject, "longitude").toDouble())
-                    }
-                    startActivity(intent)
-                }
-                content.addView(listButton)
+                makeButton(jObject)
             }
         }
     }
