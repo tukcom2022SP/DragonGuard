@@ -6,7 +6,8 @@
  - 앱 이름/앱 아이콘<br>
  - 텍스트(제주관광공사가 엄선한 관광지)<br>
  - 관광지 리스트<br>
-<img width="20%" src="https://user-images.githubusercontent.com/81843677/183812793-dc946534-c200-40c4-8f66-a74d0d0f6033.png">
+<img width="20%" src="https://user-images.githubusercontent.com/81843677/183814341-86ab99bb-6182-421a-b489-63ce1e51743d.jpeg"><img width="20%" src="https://user-images.githubusercontent.com/81843677/183814663-311cac6c-c08c-48af-bca7-e2238e3dcd0a.jpeg"><img width="20%" src="https://user-images.githubusercontent.com/81843677/183814741-978217b9-a93b-4c61-93d5-f1179c1edc53.jpeg">
+
 
  ### 세컨화면
   - 관광지 제목 / 뒤로가기 버튼<br>
