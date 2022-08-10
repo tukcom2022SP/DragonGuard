@@ -218,6 +218,10 @@ class MainActivity : Activity() {
         listButton.setTypeface(typeFace)
         listButton.setTextColor(Color.BLACK)
         listButton.setOnClickListener {
+            if (isConnectInternet() == "null") {
+                Toast.makeText(this@MainActivity, "인터넷 연결 끊김", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val jRephoto = jObject.getJSONObject("repPhoto")
             val jPhotoid = jRephoto.getJSONObject("photoid")
             var intent = Intent(applicationContext, SecondActivity::class.java)
