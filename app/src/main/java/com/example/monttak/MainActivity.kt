@@ -165,7 +165,7 @@ class MainActivity : Activity() {
     //api 연동
     fun JsonArray(): JSONArray {
         val pageNo = 1
-        val key = "rrq71a2rotyj9tqm"
+        val key = ""
         val site =
             "https://api.visitjeju.net/vsjApi/contents/searchList?apiKey=&${key}&locale=kr&page=" + pageNo.toString()
 
