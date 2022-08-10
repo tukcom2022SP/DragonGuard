@@ -13,6 +13,7 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.bumptech.glide.Glide
 import com.example.monttak.databinding.ActivitySecond2Binding
 import kotlinx.android.synthetic.main.activity_second2.*
 import kotlinx.coroutines.CoroutineScope
@@ -52,11 +53,14 @@ class SecondActivity : AppCompatActivity() {
         longitude = intent.getDoubleExtra("longitude", 0.0)
 
 //        secondcontent.removeAllViews()
+
+//        위도 경도 있는 장소들을 지도에 보여주기(binding)
         binding = ActivitySecond2Binding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         val params = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT,ConstraintLayout.LayoutParams.MATCH_PARENT)
         if (latitude != 0.0){
+            clKakaoMapView.isEnabled = true
             mapView = MapView(this)
             binding.clKakaoMapView.addView(mapView)
             mapView.layoutParams = params
@@ -70,8 +74,11 @@ class SecondActivity : AppCompatActivity() {
             marker.markerType = MapPOIItem.MarkerType.RedPin
             marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
             mapView.addPOIItem(marker)
+        }else{
+            clKakaoMapView.isEnabled = false
         }
 
+//        제목 및 관련 정보 넣기
         secondbar.text = titleBar
         arrangeView("주소")
         arrangeView("도로명주소")
@@ -87,7 +94,7 @@ class SecondActivity : AppCompatActivity() {
 //        myLinear.layoutParams = params
 //        myLinear.setBackgroundResource(R.drawable.textbar)
 
-
+//        코루틴을 이용한 url 이미지 가져오기
         val corutin = CoroutineScope(Dispatchers.Main)
         corutin.launch {
             val originalDeferred = corutin.async(Dispatchers.IO) {
@@ -97,6 +104,10 @@ class SecondActivity : AppCompatActivity() {
             loadImage(originalBitmap)
 
         }
+
+//        Glide 사용
+//        Glide.with(this).load(thumbnail).into(imageview)
+
 //        var mThread = mapViewSetting()
 //        mThread.start()
 //        mThread.join()
@@ -120,45 +131,46 @@ class SecondActivity : AppCompatActivity() {
         }
     }
 
-    inner class mapViewSetting : Thread() {
-        override fun run() {
-            val params = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
+//    inner class mapViewSetting : Thread() {
+//        override fun run() {
+//            val params = LinearLayout.LayoutParams(
+//                LinearLayout.LayoutParams.WRAP_CONTENT,
+//                LinearLayout.LayoutParams.WRAP_CONTENT
+//            )
+//
+//            if (latitude != 0.0) {
+//                mapView = MapView(this@SecondActivity)
+//                mapView.layoutParams = params
+//                val mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
+//                mapView.setMapCenterPoint(mapPoint, true)
+//                mapView.setZoomLevel(1, true)
+//
+//                val marker = MapPOIItem()
+//                marker.itemName = titleBar
+//                marker.mapPoint = mapPoint
+//                marker.markerType = MapPOIItem.MarkerType.RedPin
+//                marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
+//                mapView.addPOIItem(marker)
+//
+//                Log.d(TAG, "Log ----- Map")
+//            } else {
+//                return
+//            }
+//            runOnUiThread{
+//                maplayout.addView(mapView)
+//
+//            }
+//        }
+//
+//    }
 
-            if (latitude != 0.0) {
-                mapView = MapView(this@SecondActivity)
-                mapView.layoutParams = params
-                val mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
-                mapView.setMapCenterPoint(mapPoint, true)
-                mapView.setZoomLevel(1, true)
-
-                val marker = MapPOIItem()
-                marker.itemName = titleBar
-                marker.mapPoint = mapPoint
-                marker.markerType = MapPOIItem.MarkerType.RedPin
-                marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
-                mapView.addPOIItem(marker)
-
-                Log.d(TAG, "Log ----- Map")
-            } else {
-                return
-            }
-            runOnUiThread{
-                maplayout.addView(mapView)
-
-            }
-        }
-
-    }
-
-
-    fun getOriginalBitmap(): Bitmap =
+//    URL의 bitmap가져오기
+    private fun getOriginalBitmap(): Bitmap =
         URL(thumbnail).openStream().use {
             BitmapFactory.decodeStream(it)
         }
 
+//    이미지뷰에 가져온 bitmap 넣기
     private fun loadImage(bmp: Bitmap) {
 
         imageview.setImageBitmap(bmp)
@@ -196,6 +208,8 @@ class SecondActivity : AppCompatActivity() {
             }
         }
     }
+
+//    해시 키 구하기
 //    fun getAppKeyHash() {
 //        try {
 //            val info =
